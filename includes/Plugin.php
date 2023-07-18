@@ -71,16 +71,17 @@ class Plugin {
         self::$instance = $this;
 	    
         add_action( 'plugins_loaded', 	[ $this, 'on_plugins_loaded' ] );
-        if( function_exists( 'wpFluentForm' ) ) {
-		add_action('breakdance_loaded', function () {
-			\Breakdance\AJAX\register_handler(
-				'ue_get_fluentforms',
-				[ $this, 'getFluentForms' ],
-				'edit',
-				true
-			);
-		});
-	}
+        add_action('breakdance_loaded', function () {
+		\Breakdance\ElementStudio\registerSaveLocation(
+			\Breakdance\Util\getDirectoryPathRelativeToPluginFolder( dirname( $this->plugin_file ) ) . '/elements',
+			'Upadans',
+			'element',
+			'Upadans',
+			true
+		);
+
+		add_filter('breakdance_element_dependencies', [ $this, 'addDependencies' ], 100, 1);
+	}, 9 );
     }
 
     /**
@@ -201,23 +202,6 @@ class Plugin {
 
     	return $deps;
 
-    }
-
-    public function getFluentForms() {
-    	if( ! function_exists( 'wpFluentForm' ) )
-    		return [];
-    	
-		$ff_list = \FluentForm\App\Models\Form::select(['id', 'title'])->orderBy('id', 'DESC')->get();
-		if( $ff_list ) {
-			$fforms[]= [ 'value' => 'none', 'text' => esc_html__('Select a Fluent Forms', 'fluentform')];
-			foreach ($ff_list as $form) {
-				$fforms[] = [ 'value' => "{$form->id}", 'text' => esc_html($form->title) . ' (' . $form->id . ')' ];
-			}
-		}  else {
-			$fforms[]= [ 'value' => 'none', 'text' => esc_html__('Create a Form First', 'fluentform')];
-		}
-
-		return $fforms;
     }
 
 	public function ue_style_post_state ($post_states, $post) {
