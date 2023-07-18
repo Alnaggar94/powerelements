@@ -82,7 +82,31 @@ class Plugin {
 
 		add_filter('breakdance_element_dependencies', [ $this, 'addDependencies' ], 100, 1);
 	}, 9 );
+
+        if( function_exists( 'wpFluentForm' ) ) {
+		add_action('breakdance_loaded', function () {
+			\Breakdance\AJAX\register_handler(
+				'ue_get_fluentforms',
+				[ $this, 'getFluentForms' ],
+				'edit',
+				true
+			);
+		});
+	}
     }
+
+	public function ue_style_post_state ($post_states, $post) {
+		if( isset( $post_states['breakdance'] ) ) {
+			if( current_user_can( 'edit_posts', $post->ID ) ) {
+				$edit_link = get_permalink($post->ID) . '?breakdance=builder&id=' . $post->ID;
+				$post_states['breakdance'] = '<a href="' . $edit_link . '" rel="nofollow ugc" style="background-color:#fcd568; padding: 2px 6px 4px;color:#444">' . $post_states['breakdance'] . '</a>';
+			} else {
+				$post_states['breakdance'] = '<span style="background-color:#fcd568; padding: 4px 6px">' . $post_states['breakdance'] . '</span>';
+			}
+		}
+
+		return $post_states;
+	}
 
     /**
      * Will fire after the plugins are loaded and will initialize this plugin
@@ -204,16 +228,20 @@ class Plugin {
 
     }
 
-	public function ue_style_post_state ($post_states, $post) {
-		if( isset( $post_states['breakdance'] ) ) {
-			if( current_user_can( 'edit_posts', $post->ID ) ) {
-				$edit_link = get_permalink($post->ID) . '?breakdance=builder&id=' . $post->ID;
-				$post_states['breakdance'] = '<a href="' . $edit_link . '" rel="nofollow ugc" style="background-color:#fcd568; padding: 2px 6px 4px;color:#444">' . $post_states['breakdance'] . '</a>';
-			} else {
-				$post_states['breakdance'] = '<span style="background-color:#fcd568; padding: 4px 6px">' . $post_states['breakdance'] . '</span>';
+    public function getFluentForms() {
+    	if( ! function_exists( 'wpFluentForm' ) )
+    		return [];
+    	
+		$ff_list = \FluentForm\App\Models\Form::select(['id', 'title'])->orderBy('id', 'DESC')->get();
+		if( $ff_list ) {
+			$fforms[]= [ 'value' => 'none', 'text' => esc_html__('Select a Fluent Forms', 'fluentform')];
+			foreach ($ff_list as $form) {
+				$fforms[] = [ 'value' => "{$form->id}", 'text' => esc_html($form->title) . ' (' . $form->id . ')' ];
 			}
+		}  else {
+			$fforms[]= [ 'value' => 'none', 'text' => esc_html__('Create a Form First', 'fluentform')];
 		}
-	
-		return $post_states;
-	}
+
+		return $fforms;
+    }
 }
