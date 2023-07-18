@@ -1,0 +1,9 @@
+{% if content.general.hide_in_builder_editor_ and isBuilder %}
+Off Canvas
+{% endif %}
+{% if(content.backdrop.disable_backdrop == false) %}
+<div class="ue-ocp-backdrop"></div>
+{% endif %}
+<div class="ue-ocp-content" data-id="%%ID%%">
+  %%CHILDREN%%
+</div>

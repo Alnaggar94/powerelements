@@ -1,0 +1,148 @@
+.ue-offcanvas {
+    --sb-light-color: rgba(0, 0, 0, 0.3);
+    --sb-dark-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.ue-ocp-content {
+    background-color: #fff;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+  	padding: 15px;
+    position: fixed;
+    top: 0;
+    overflow-x: hidden;
+    pointer-events: auto;
+    z-index: 10;
+    -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.77, 0, 0.175, 1), box-shadow 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    -o-transition: -o-transform 0.5s cubic-bezier(0.77, 0, 0.175, 1), box-shadow 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    -moz-transition: -moz-transform 0.5s cubic-bezier(0.77, 0, 0.175, 1), box-shadow 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1), box-shadow 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.ue-push-content .ue-ocp-content {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.ue-offcanvas.ue-hide-panel .ue-ocp-content {
+    box-shadow: none !important;
+  	border: none!important;
+}
+
+.ue-ocp-right .ue-ocp-content {
+    left: auto;
+    right: 0;
+    width: 300px;
+}
+.ue-ocp-left .ue-ocp-content {
+    left: 0;
+    right: auto;
+    width: 300px;
+}
+.ue-ocp-top .ue-ocp-content {
+    left: 0;
+    bottom: auto;
+    height: 300px;
+    width: 100%;
+}
+.ue-ocp-bottom .ue-ocp-content {
+    left: 0;
+    bottom: 0;
+    top: auto;
+    height: 300px;
+    width: 100%;
+}
+
+.ue-hide-panel.ue-ocp-left:not(.ue-push-content) .ue-ocp-content {
+    -webkit-transform: translate(-130%, 0);
+    -o-transform: translate(-130%, 0);
+    -moz-transform: translate(-130%, 0);
+    transform: translate(-130%, 0);
+}
+.ue-hide-panel.ue-ocp-right:not(.ue-push-content) .ue-ocp-content {
+    -webkit-transform: translate(130%, 0);
+    -o-transform: translate(130%, 0);
+    -moz-transform: translate(130%, 0);
+    transform: translate(130%, 0);
+}
+.ue-hide-panel.ue-ocp-top:not(.ue-push-content) .ue-ocp-content {
+    -webkit-transform: translate(0, -130%);
+    -o-transform: translate(0, -130%);
+    -moz-transform: translate(0, -130%);
+    transform: translate(0, -130%);
+}
+.ue-hide-panel.ue-ocp-bottom:not(.ue-push-content) .ue-ocp-content {
+    -webkit-transform: translate(0, 130%);
+    -o-transform: translate(0, 130%);
+    -moz-transform: translate(0, 130%);
+    transform: translate(0, 130%);
+}
+
+.ue-ocp-left.ue-push-content .ue-ocp-content {
+    -webkit-transform: translate(-100%, 0);
+    -o-transform: translate(-100%, 0);
+    -moz-transform: translate(-100%, 0);
+    transform: translate(-100%, 0);
+}
+.ue-ocp-right.ue-push-content .ue-ocp-content {
+    -webkit-transform: translate(100%, 0);
+    -o-transform: translate(100%, 0);
+    -moz-transform: translate(100%, 0);
+    transform: translate(100%, 0);
+}
+.ue-ocp-top.ue-push-content .ue-ocp-content {
+    -webkit-transform: translate(0, -100%);
+    -o-transform: translate(0, -100%);
+    -moz-transform: translate(0, -100%);
+    transform: translate(0, -100%);
+}
+.ue-ocp-bottom.ue-push-content .ue-ocp-content {
+    -webkit-transform: translate(0, 100%);
+    -o-transform: translate(0, 100%);
+    -moz-transform: translate(0, 100%);
+    transform: translate(0, 100%);
+}
+.ue-hide-panel.ue-push-content {
+    opacity: 0;
+}
+
+.ue-ocp-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    pointer-events: auto;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    -o-transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    -moz-transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    width: 100%;
+    z-index: 9;
+}
+.ue-offcanvas:not(.ue-hide-panel) .ue-ocp-backdrop {
+    opacity: 1;
+    visibility: visible;
+}
+
+body.ue-disable-scroll {
+    overflow: hidden;
+}
+.ue-hide-wp-admin-bar,
+.ocp-hide-on-page-load .ue-ocp-backdrop {
+    display: none;
+}
+.ue-remove-spacing {
+    margin: 0!important;
+    top: 0!important;
+    padding: 0!important;
+}

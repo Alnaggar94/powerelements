@@ -1,0 +1,24 @@
+<button 
+  class="hamburger hamburger--{{ content.burger_options.effect | default('spin') }}{{ content.burger_options.animation_type == 'r' ? '-r' : '' }}" 
+  type="button" 
+  role="button" 
+  {% if content.burger_options.aria_label %} 
+  aria-label="{{ content.burger_options.aria_label }}"
+  {% endif %}
+>
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+
+  {% if content.button_text.text %}
+    <span class="hamburger-label">{{ content.button_text.text }}</span>
+  {% endif %}
+
+</button>
+
+{% if content.dropdown.enable_popup %}
+{% set class = (content.dropdown.preview_in_builder and isBuilder) ? 'ue-burger-sub-menu--open' : '' %}
+<span class="ue-burger-sub-menu {{ class }}">
+  %%CHILDREN%%
+</span>
+{% endif %}

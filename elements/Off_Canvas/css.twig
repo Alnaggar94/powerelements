@@ -1,0 +1,30 @@
+%%SELECTOR%% { }
+{% if isBuilder %}
+.ue-offcanvas:not(.ue-hide-panel) {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+{% endif %}
+
+%%SELECTOR%% .ue-ocp-content {
+  {{ macros.background(content.panel.background) }}
+  {{ macros.borders(content.panel.borders) }}
+  {% if content.general.transition_duration %}
+  transition-duration: {{ content.general.transition_duration }}ms;
+  {% endif %}
+  {% if content.panel.height.style %}
+  height: {{ content.panel.height.style }};
+  {% endif %}
+  {{ macros.spacing_padding_all(content.panel.padding) }}
+  width: {{ content.panel.width.style|default('300px') }};
+}
+
+{% if content.backdrop.disable_backdrop == false %}
+%%SELECTOR%% .ue-ocp-backdrop {
+  background-color: {{ content.backdrop.background }}
+  transition-duration: {{ content.backdrop.fade_duration.style }}ms;
+}
+{% endif %}

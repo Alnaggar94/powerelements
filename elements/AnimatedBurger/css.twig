@@ -1,0 +1,61 @@
+%%SELECTOR%% .hamburger{
+  	{% if content.button_text.position == 'row' %}
+  		flex-direction: {{content.button_text.position}};
+	{% elseif content.button_text.position == 'row-reverse' %}
+  		flex-direction: {{content.button_text.position}};
+	{% endif %}
+	{% if content.button_text.gap %}
+		gap: {{ content.button_text.gap }}px;
+  	{% endif %}
+  
+  --hamburger-layer-width:{{ content.burger_options.line_width.style }};
+  --hamburger-layer-height: {{ content.burger_options.line_height.style }};
+  --hamburger-layer-spacing: {{ content.burger_options.space_between_lines.style }};
+  --hamburger-layer-border-radius: {{ content.burger_options.line_border_radius.style }};
+}
+
+%%SELECTOR%% .hamburger-inner,
+%%SELECTOR%% .hamburger-inner:before,
+%%SELECTOR%% .hamburger-inner:after {
+   background-color: {{ content.burger_options.line_color }}
+}
+
+%%SELECTOR%% .hamburger .hamburger-inner:before {
+  width: {{ content.burger_options.slug_cant_start_with_number_1st_line_width.style }};
+}
+
+%%SELECTOR%% .hamburger .hamburger-inner:after {
+  width: {{ content.burger_options.slug_cant_start_with_number_3rd_line_width.style }};
+}
+
+%%SELECTOR%% .hamburger:hover .hamburger-inner,
+%%SELECTOR%% .hamburger:hover .hamburger-inner:before,
+%%SELECTOR%% .hamburger:hover .hamburger-inner:after {
+   background-color: {{ content.burger_options.line_color_hover }}
+}
+
+%%SELECTOR%% .hamburger.is-active .hamburger-inner,
+%%SELECTOR%% .hamburger.is-active .hamburger-inner:before,
+%%SELECTOR%% .hamburger.is-active .hamburger-inner:after {
+   background-color: {{ content.burger_options.line_color_active }}
+}
+
+%%SELECTOR%% .hamburger-label {
+   {{ macros.typography(content.button_text.typography, globalSettings) }}
+}
+
+%%SELECTOR%% .hamburger:hover .hamburger-label {
+   color: {{ content.button_text.color_hover }}
+}
+
+%%SELECTOR%% .hamburger.is-active .hamburger-label {
+   color: {{ content.button_text.color_active }}
+}
+
+%%SELECTOR%% .ue-burger-sub-menu {
+  {{ macros.backgroundColor(content.dropdown.background) }}
+  {{ macros.borders(content.dropdown.borders) }}
+  {{ macros.spacing_padding_all(content.dropdown.padding) }}
+  width: {{ content.dropdown.width.style }};
+}
+
