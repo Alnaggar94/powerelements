@@ -1,0 +1,94 @@
+{% if content.general.horizontal_gap.style %}
+%%SELECTOR%% .frm-fluent-form .ff-t-cell{
+  padding-left: {{ content.general.horizontal_gap.style }};
+  padding-right: {{ content.general.horizontal_gap.style }};
+}
+{% endif %}
+{% if content.general.vertical_gap.style %}
+%%SELECTOR%% .fluentform .ff-el-group {
+  margin-bottom: {{ content.general.vertical_gap.style }};
+}
+{% endif %}
+%%SELECTOR%% .fluentform {
+  {{ macros.background(content.form_container.background) }}
+  {{ macros.borders(content.form_container.borders) }}
+  {{ macros.spacing_all(content.form_container.spacing) }}
+  width: {{ content.form_container.width.style }};
+}
+{% if content.labels.hide_labels %}
+%%SELECTOR%% .fluentform .ff-el-input--label label { display: none; }
+{% else %}
+%%SELECTOR%% .fluentform .ff-el-input--label label {
+  background-color: {{ content.labels.background }};
+  {{ macros.spacing_all(content.labels.spacing) }}
+  {{ macros.spacing_all(content.labels.spacing) }}
+  {{ macros.typography(content.labels.typography, globalSettings) }}
+  width: {{ content.labels.width.style }};
+}
+{% endif %}
+%%SELECTOR%% .fluentform .ff-el-input--label.ff-el-is-required.asterisk-left label:before,
+%%SELECTOR%% .fluentform .ff-el-input--label.ff-el-is-required.asterisk-right label:after {
+  color: {{ content.asterisk.color }};
+  font-size: {{ content.asterisk.size.style }};
+}
+%%SELECTOR%% .fluentform .ff-el-input--label.ff-el-is-required.asterisk-right label:after {
+  margin-left: {{ content.asterisk.gap_left.style }};
+  margin-right: {{ content.asterisk.gap_right.style }};
+}
+%%SELECTOR%% .ff-el-form-control {
+  background-color: {{ content.input_textarea.background_colour }};
+  {{ macros.spacing_padding_all(content.input_textarea.padding) }}
+  {{ macros.typography(content.input_textarea.typography, globalSettings) }}
+  {{ macros.borders(content.input_textarea.borders) }}
+  height: {{ content.input_textarea.height.style }};
+}
+%%SELECTOR%% .ff-el-form-control:focus {
+  background-color: {{ content.input_textarea.foucs_background_colour }};
+  color: {{ content.input_textarea.foucs_text_colour }};
+  {{ macros.borders(content.input_textarea.foucs_borders) }}
+}
+%%SELECTOR%% ::placeholder {
+  {{ macros.typography(content.input_textarea.placeholder, globalSettings) }}
+}
+%%SELECTOR%% .ff-el-group textarea.ff-el-form-control {
+  width: {{ content.input_textarea.ta_width.style }};
+  height: {{ content.input_textarea.ta_height.style }};
+}
+%%SELECTOR%% .ff-btn-submit {
+  {{ macros.spacing_all(content.submit_button.spacing) }}
+  {{ macros.backgroundColor(content.submit_button.background_colour) }}
+  {{ macros.typography(content.submit_button.typography, globalSettings) }}
+  {{ macros.borders(content.submit_button.borders) }}
+  width: {{ content.submit_button.width.style }};
+}
+%%SELECTOR%% .ff-btn-submit:hover {
+  {{ macros.backgroundColor(content.submit_button.hover_background_colour) }}
+  color: {{ content.submit_button.hover_text_colour }};
+  {{ macros.borders(content.submit_button.hover_borders) }}
+}
+%%SELECTOR%% .ff-el-section-break {
+  background-color: {{ content.section_break.background_colour }};
+  border-color: {{ content.section_break.line_colour }};
+  border-width: {{ content.section_break.line_width.style }};
+  {{ macros.spacing_all(content.section_break.spacing) }}
+}
+%%SELECTOR%% .ff-el-section-title {
+  {{ macros.typography(content.section_break.title, globalSettings) }}
+}
+%%SELECTOR%% .ff-section_break_desk {
+  {{ macros.typography(content.section_break.description, globalSettings) }}
+}
+%%SELECTOR%% .ff-message-success {
+  background-color: {{ content.success_message.background }};
+  width: {{ content.success_message.width.style }};
+  {{ macros.spacing_all(content.success_message.spacing) }}
+  {{ macros.typography(content.success_message.typography, globalSettings) }}
+  {{ macros.borders(content.success_message.borders) }}
+}
+%%SELECTOR%% .ff-el-is-error .ff-el-form-control {
+  border-color: {{ content.validation_error.input_fields_border_color }}
+}
+%%SELECTOR%% .ff-el-is-error .text-danger {
+  {{ macros.typography(content.validation_error.typography, globalSettings) }}
+  margin-top: {{ content.validation_error.margin_top.style }};
+}
