@@ -69,47 +69,19 @@ class Plugin {
         $this->version           = $this->plugin_data['Version'];
 
         self::$instance = $this;
-
-        //add_action( 'init', 			[ $this, 'on_wp_init' ], 11 );
-        //add_action( 'init', 			[ $this, 'init_theme_styles' ], 9 );
-        //add_action( 'after_setup_theme', [ $this, 'on_after_setup_theme' ] );
+	    
         add_action( 'plugins_loaded', 	[ $this, 'on_plugins_loaded' ] );
-        add_action('breakdance_loaded', function () {
-			\Breakdance\ElementStudio\registerSaveLocation(
-				\Breakdance\Util\getDirectoryPathRelativeToPluginFolder( dirname( $this->plugin_file ) ) . '/elements',
-				'Upadans',
-				'element',
-				'Upadans',
-				false
-			);
-
-			add_filter('breakdance_element_dependencies', [ $this, 'addDependencies' ], 100, 1);
-		}, 9 );
-
         if( function_exists( 'wpFluentForm' ) ) {
-			add_action('breakdance_loaded', function () {
-				\Breakdance\AJAX\register_handler(
-					'ue_get_fluentforms',
-					[ $this, 'getFluentForms' ],
-					'edit',
-					true
-				);
-			});
-		}
-    }
-
-	public function ue_style_post_state ($post_states, $post) {
-		if( isset( $post_states['breakdance'] ) ) {
-			if( current_user_can( 'edit_posts', $post->ID ) ) {
-				$edit_link = get_permalink($post->ID) . '?breakdance=builder&id=' . $post->ID;
-				$post_states['breakdance'] = '<a href="' . $edit_link . '" rel="nofollow ugc" style="background-color:#fcd568; padding: 2px 6px 4px;color:#444">' . $post_states['breakdance'] . '</a>';
-			} else {
-				$post_states['breakdance'] = '<span style="background-color:#fcd568; padding: 4px 6px">' . $post_states['breakdance'] . '</span>';
-			}
-		}
-
-		return $post_states;
+		add_action('breakdance_loaded', function () {
+			\Breakdance\AJAX\register_handler(
+				'ue_get_fluentforms',
+				[ $this, 'getFluentForms' ],
+				'edit',
+				true
+			);
+		});
 	}
+    }
 
     /**
      * Will fire after the plugins are loaded and will initialize this plugin
@@ -247,4 +219,17 @@ class Plugin {
 
 		return $fforms;
     }
+
+	public function ue_style_post_state ($post_states, $post) {
+		if( isset( $post_states['breakdance'] ) ) {
+			if( current_user_can( 'edit_posts', $post->ID ) ) {
+				$edit_link = get_permalink($post->ID) . '?breakdance=builder&id=' . $post->ID;
+				$post_states['breakdance'] = '<a href="' . $edit_link . '" rel="nofollow ugc" style="background-color:#fcd568; padding: 2px 6px 4px;color:#444">' . $post_states['breakdance'] . '</a>';
+			} else {
+				$post_states['breakdance'] = '<span style="background-color:#fcd568; padding: 4px 6px">' . $post_states['breakdance'] . '</span>';
+			}
+		}
+	
+		return $post_states;
+	}
 }
