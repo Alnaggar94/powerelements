@@ -20,6 +20,7 @@ General Elements
 ----------------
 * Animated Burger
 * Off Canvas
+* Fluent Form Styler (Inprogress)
 
 ## Changelog
 
