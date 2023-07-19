@@ -261,8 +261,8 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "background_colour",
-        "Background colour",
+        "background_color",
+        "Background color",
         [],
         ['type' => 'color', 'layout' => 'inline'],
         false,
@@ -292,16 +292,16 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "foucs_background_colour",
-        "Background colour",
+        "foucs_background_color",
+        "Background color",
         [],
         ['type' => 'color', 'layout' => 'inline'],
         false,
         false,
         [],
       ), c(
-        "foucs_text_colour",
-        "Text colour",
+        "foucs_text_color",
+        "Text color",
         [],
         ['type' => 'color', 'layout' => 'inline'],
         false,
@@ -358,8 +358,8 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
       "spacing",
        ['type' => 'popout']
      ), c(
-        "background_colour",
-        "Background colour",
+        "background_color",
+        "Background color",
         [],
         ['type' => 'color', 'layout' => 'inline', 'colorOptions' => ['type' => 'solidAndGradient']],
         false,
@@ -384,16 +384,16 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "hover_background_colour",
-        "Background colour",
+        "hover_background_color",
+        "Background color",
         [],
         ['type' => 'color', 'layout' => 'inline', 'colorOptions' => ['type' => 'solidAndGradient']],
         false,
         false,
         [],
       ), c(
-        "hover_text_colour",
-        "Text colour",
+        "hover_text_color",
+        "Text color",
         [],
         ['type' => 'color', 'layout' => 'inline', 'colorOptions' => ['type' => 'solidOnly']],
         false,
@@ -484,7 +484,7 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "background",
+        "sel_background",
         "Background",
         [],
         ['type' => 'color', 'layout' => 'inline'],
@@ -492,8 +492,8 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "colour",
-        "Colour",
+        "sel_color",
+        "Color",
         [],
         ['type' => 'color', 'layout' => 'inline'],
         false,
@@ -502,7 +502,7 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
       ), getPresetSection(
       "EssentialElements\\borders",
       "Borders",
-      "borders",
+      "sel_borders",
        ['type' => 'popout']
      )],
         ['type' => 'section', 'layout' => 'vertical'],
@@ -521,29 +521,19 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         false,
         [],
       ), getPresetSection(
+      "EssentialElements\\borders",
+      "Table borders",
+      "table_borders",
+       ['type' => 'popout']
+     ), getPresetSection(
       "EssentialElements\\spacing_padding_all",
       "Table Head Cell Padding",
       "table_head_cell_padding",
        ['type' => 'popout']
      ), getPresetSection(
-      "EssentialElements\\spacing_padding_all",
-      "Table Body Cell Padding",
-      "table_body_cell_padding",
-       ['type' => 'popout']
-     ), getPresetSection(
       "EssentialElements\\typography",
       "Heading typography",
       "heading_typography",
-       ['type' => 'popout']
-     ), getPresetSection(
-      "EssentialElements\\typography",
-      "Cell typography",
-      "cell_typography",
-       ['type' => 'popout']
-     ), getPresetSection(
-      "EssentialElements\\borders",
-      "Table borders",
-      "table_borders",
        ['type' => 'popout']
      ), c(
         "table_header_background_color",
@@ -553,7 +543,17 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         false,
         false,
         [],
-      ), c(
+      ), getPresetSection(
+      "EssentialElements\\spacing_padding_all",
+      "Table Body Cell Padding",
+      "table_body_cell_padding",
+       ['type' => 'popout']
+     ), getPresetSection(
+      "EssentialElements\\typography",
+      "Cell typography",
+      "cell_typography",
+       ['type' => 'popout']
+     ), c(
         "table_body_background_color",
         "Table body background color",
         [],
@@ -586,16 +586,16 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         "rating",
         "Rating",
         [c(
-        "empty_stars_colour",
-        "Empty stars colour",
+        "empty_stars_color",
+        "Empty stars color",
         [],
         ['type' => 'color', 'layout' => 'inline'],
         false,
         false,
         [],
       ), c(
-        "full_stars_colour",
-        "Full stars colour",
+        "full_stars_color",
+        "Full stars color",
         [],
         ['type' => 'color', 'layout' => 'inline'],
         false,
@@ -966,8 +966,8 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "background_colour",
-        "Background colour",
+        "background_color",
+        "Background color",
         [],
         ['type' => 'color', 'layout' => 'inline'],
         false,
@@ -987,8 +987,8 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "th_bg_colour",
-        "TH BG colour",
+        "th_bg_color",
+        "TH BG color",
         [],
         ['type' => 'color', 'layout' => 'inline'],
         false,
@@ -1037,16 +1037,16 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         "section_break",
         "Section Break",
         [c(
-        "background_colour",
-        "Background colour",
+        "background_color",
+        "Background color",
         [],
         ['type' => 'color', 'layout' => 'inline'],
         false,
         false,
         [],
       ), c(
-        "line_colour",
-        "Line colour",
+        "line_color",
+        "Line color",
         [],
         ['type' => 'color', 'layout' => 'inline'],
         false,
@@ -1203,7 +1203,7 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
 
     static function dynamicPropertyPaths()
     {
-        return ['0' => ['accepts' => 'string', 'path' => 'content.general.form'], '1' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '2' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '3' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '4' => ['accepts' => 'image_url', 'path' => 'content.form_container.background.layers[].image'], '5' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '6' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '7' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '8' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '9' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string']];
+        return ['0' => ['accepts' => 'string', 'path' => 'content.general.form'], '1' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '2' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '3' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '4' => ['accepts' => 'image_url', 'path' => 'content.form_container.background.layers[].image'], '5' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '6' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '7' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '8' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '9' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '10' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string']];
     }
 
     static function additionalClasses()

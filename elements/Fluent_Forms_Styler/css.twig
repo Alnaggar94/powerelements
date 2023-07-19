@@ -36,15 +36,15 @@
   margin-right: {{ content.asterisk.gap_right.style }};
 }
 %%SELECTOR%% .ff-el-form-control {
-  background-color: {{ content.input_textarea.background_colour }};
+  background-color: {{ content.input_textarea.background_color }};
   {{ macros.spacing_padding_all(content.input_textarea.padding) }}
   {{ macros.typography(content.input_textarea.typography, globalSettings) }}
   {{ macros.borders(content.input_textarea.borders) }}
   height: {{ content.input_textarea.height.style }};
 }
 %%SELECTOR%% .ff-el-form-control:focus {
-  background-color: {{ content.input_textarea.foucs_background_colour }};
-  color: {{ content.input_textarea.foucs_text_colour }};
+  background-color: {{ content.input_textarea.foucs_background_color }};
+  color: {{ content.input_textarea.foucs_text_color }};
   {{ macros.borders(content.input_textarea.foucs_borders) }}
 }
 %%SELECTOR%% ::placeholder {
@@ -56,19 +56,42 @@
 }
 %%SELECTOR%% .ff-btn-submit {
   {{ macros.spacing_all(content.submit_button.spacing) }}
-  {{ macros.backgroundColor(content.submit_button.background_colour) }}
+  {{ macros.backgroundColor(content.submit_button.background_color) }}
   {{ macros.typography(content.submit_button.typography, globalSettings) }}
   {{ macros.borders(content.submit_button.borders) }}
   width: {{ content.submit_button.width.style }};
 }
 %%SELECTOR%% .ff-btn-submit:hover {
-  {{ macros.backgroundColor(content.submit_button.hover_background_colour) }}
-  color: {{ content.submit_button.hover_text_colour }};
+  {{ macros.backgroundColor(content.submit_button.hover_background_color) }}
+  color: {{ content.submit_button.hover_text_color }};
   {{ macros.borders(content.submit_button.hover_borders) }}
 }
+%%SELECTOR%% .fluentform .ff-el-group.ff_list_buttons .ff-el-form-check label>span {
+  background-color: {{ content.checkbox_radio_photo.background }};
+  {{ macros.typography(content.checkbox_radio_photo.typography, globalSettings) }}
+}
+%%SELECTOR%% .fluentform .ff-el-group.ff_list_buttons .ff-el-form-check.ff_item_selected label > span {
+background-color: {{ content.checkbox_radio_photo.sel_background }};
+  color: {{ content.checkbox_radio_photo.sel_color }}
+}
+%%SELECTOR%% .fluentform .ff-el-group.ff_list_buttons .ff-el-form-check.ff-el-image-holder.ff_item_selected {
+  {{ macros.borders(content.checkbox_radio_photo.sel_borders) }}
+}
+%%SELECTOR%% .fluentform .ff_el_checkable_photo_holders {
+  grid-template-columns: {{ content.checkbox_radio_photo.grid_template_columns }};
+  gap: {{ content.checkbox_radio_photo.grid_gap.style }};
+}
+%%SELECTOR%% .fluentform .ff-el-group.ff_list_buttons .ff-el-form-check.ff-el-image-holder {
+  {{ macros.spacing_padding_all(content.checkbox_radio_photo.padding) }}
+  {{ macros.borders(content.checkbox_radio_photo.borders) }}
+}
+%%SELECTOR%% .fluentform label.ff-el-image-input-src {
+  width: {{ content.checkbox_radio_photo.photo_width.style }};
+  height: {{ content.checkbox_radio_photo.photo_height.style }};
+}
 %%SELECTOR%% .ff-el-section-break {
-  background-color: {{ content.section_break.background_colour }};
-  border-color: {{ content.section_break.line_colour }};
+  background-color: {{ content.section_break.background_color }};
+  border-color: {{ content.section_break.line_color }};
   border-width: {{ content.section_break.line_width.style }};
   {{ macros.spacing_all(content.section_break.spacing) }}
 }
@@ -92,3 +115,26 @@
   {{ macros.typography(content.validation_error.typography, globalSettings) }}
   margin-top: {{ content.validation_error.margin_top.style }};
 }
+%%SELECTOR%% .fluentform .ff-checkable-grids{
+  width: {{ content.checkable_grid.width.style }};
+  {{ macros.borders(content.checkable_grid.table_borders) }}
+}
+%%SELECTOR%% .fluentform .ff-checkable-grids thead>tr>th {
+  background-color: {{ content.checkable_grid.table_header_background_color }};
+  {{ macros.typography(content.checkable_grid.heading_typography, globalSettings) }}
+  {{ macros.spacing_padding_all(content.checkable_grid.table_head_cell_padding) }}
+}
+%%SELECTOR%% .fluentform .ff-checkable-grids tbody>tr>td {
+  background-color: {{ content.checkable_grid.table_body_background_color }};
+  {{ macros.typography(content.checkable_grid.cell_typography, globalSettings) }}
+  {{ macros.spacing_padding_all(content.checkable_grid.table_body_cell_padding) }}
+}
+.fluentform .ff-checkable-grids tbody>tr:nth-child(2n)>td {
+  background-color: {{ content.checkable_grid.table_body_alt_background_color }};
+  color: {{ content.checkable_grid.table_body_alt_text_color }}
+}
+{% if isBuilder %}
+.ue-ff-styler .fluentform .has-conditions {
+  display: block!important;
+}
+{% endif %}

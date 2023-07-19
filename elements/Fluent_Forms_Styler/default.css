@@ -132,10 +132,6 @@
 	}
 }
 
-.brx-body.iframe .brxe-bu-ff-styler .fluentform .has-conditions {
-	display: block!important;
-}
-
 .ue-ff-styler .fluentform .ff_el_checkable_photo_holders {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
