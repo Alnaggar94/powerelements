@@ -677,6 +677,35 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
       "Borders",
       "borders",
        ['type' => 'popout']
+     ), c(
+        "hover",
+        "Hover",
+        [],
+        ['type' => 'alert_box', 'layout' => 'vertical', 'alertBoxOptions' => ['style' => 'default', 'content' => '<p>Hover State</p>']],
+        false,
+        false,
+        [],
+      ), c(
+        "background_color",
+        "Background color",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), c(
+        "text_color",
+        "Text color",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), getPresetSection(
+      "EssentialElements\\borders",
+      "Borders",
+      "borders",
+       ['type' => 'popout']
      )],
         ['type' => 'section', 'layout' => 'vertical'],
         false,

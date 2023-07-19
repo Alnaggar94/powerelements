@@ -133,6 +133,34 @@ background-color: {{ content.checkbox_radio_photo.sel_background }};
   background-color: {{ content.checkable_grid.table_body_alt_background_color }};
   color: {{ content.checkable_grid.table_body_alt_text_color }}
 }
+%%SELECTOR%% .fluentform .ff-el-ratings{
+  --fill-inactive: {{ content.rating.empty_stars_color }};
+  --fill-active: {{ content.rating.full_stars_color }};
+}
+%%SELECTOR%% .fluentform .ff-el-ratings svg{
+  width: {{ content.rating.star_size.style }};
+  height: {{ content.rating.star_size.style }};
+}
+%%SELECTOR%% .fluentform .ff-el-ratings label {
+  margin-right: {{ content.rating.gap_between_stars.style }};
+}
+%%SELECTOR%% .ff-el-rating-text {
+  padding-left: {{ content.rating.gap_between_stars_text.style }};
+  {{ macros.typography(content.rating.typography, globalSettings) }}
+  vertical-align: {{ content.rating.vertical_align }}
+}
+%%SELECTOR%% .ff_upload_btn {
+  background-color: {{ content.file_upload.background }};
+  {% if content.file_upload.width.style %}
+  	display: block;
+  	width: {{ content.file_upload.width.style }};
+  {% endif %}
+  {{ macros.typography(content.file_upload.typography, globalSettings) }}
+  {{ macros.spacing_padding_all(content.file_upload.padding) }}
+  {{ macros.borders(content.file_upload.borders) }}
+}
+%%SELECTOR%% .ff_upload_btn:hover {
+}
 {% if isBuilder %}
 .ue-ff-styler .fluentform .has-conditions {
   display: block!important;
