@@ -19,6 +19,7 @@ Below are listed the core competencies
 General Elements
 ----------------
 * Animated Burger
+* Breadcrumbs
 * Off Canvas
 * Fluent Form Styler (Inprogress)
 
