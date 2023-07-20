@@ -686,7 +686,7 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "background_color",
+        "hover_background_color",
         "Background color",
         [],
         ['type' => 'color', 'layout' => 'inline'],
@@ -694,7 +694,7 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "text_color",
+        "hover_text_color",
         "Text color",
         [],
         ['type' => 'color', 'layout' => 'inline'],
@@ -704,7 +704,7 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
       ), getPresetSection(
       "EssentialElements\\borders",
       "Borders",
-      "borders",
+      "hover_borders",
        ['type' => 'popout']
      )],
         ['type' => 'section', 'layout' => 'vertical'],
@@ -809,7 +809,7 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "background",
+        "focus_background",
         "Background",
         [],
         ['type' => 'color', 'layout' => 'inline'],
@@ -817,7 +817,7 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "text_color",
+        "focus_text_color",
         "Text color",
         [],
         ['type' => 'color', 'layout' => 'inline'],
@@ -827,12 +827,12 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
       ), getPresetSection(
       "EssentialElements\\typography",
       "Typography",
-      "typography",
+      "focus_typography",
        ['type' => 'popout']
      ), getPresetSection(
       "EssentialElements\\borders",
       "Borders",
-      "borders",
+      "focus_borders",
        ['type' => 'popout']
      ), c(
         "plus_minus_circle",
@@ -1003,9 +1003,9 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         false,
         [],
       ), getPresetSection(
-      "EssentialElements\\typography",
-      "Typography",
-      "typography",
+      "EssentialElements\\borders",
+      "Borders",
+      "borders",
        ['type' => 'popout']
      ), c(
         "table_head",
@@ -1017,7 +1017,7 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         [],
       ), c(
         "th_bg_color",
-        "TH BG color",
+        "Background color",
         [],
         ['type' => 'color', 'layout' => 'inline'],
         false,
@@ -1025,12 +1025,12 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
         [],
       ), getPresetSection(
       "EssentialElements\\typography",
-      "TH Typography",
+      "Typography",
       "th_typography",
        ['type' => 'popout']
      ), getPresetSection(
       "EssentialElements\\borders",
-      "TH Borders",
+      "Borders",
       "th_borders",
        ['type' => 'popout']
      ), c(
@@ -1232,7 +1232,7 @@ class FluentFormsStyler extends \Breakdance\Elements\Element
 
     static function dynamicPropertyPaths()
     {
-        return ['0' => ['accepts' => 'string', 'path' => 'content.general.form'], '1' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '2' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '3' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '4' => ['accepts' => 'image_url', 'path' => 'content.form_container.background.layers[].image'], '5' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '6' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '7' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '8' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '9' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '10' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string']];
+        return ['0' => ['accepts' => 'string', 'path' => 'content.general.form'], '1' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '2' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '3' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '4' => ['accepts' => 'image_url', 'path' => 'content.form_container.background.layers[].image'], '5' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '6' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '7' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '8' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '9' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '10' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '11' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '12' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string']];
     }
 
     static function additionalClasses()

@@ -160,6 +160,94 @@ background-color: {{ content.checkbox_radio_photo.sel_background }};
   {{ macros.borders(content.file_upload.borders) }}
 }
 %%SELECTOR%% .ff_upload_btn:hover {
+  background-color: {{ content.file_upload.hover_background_color }};
+  color: {{ content.file_upload.hover_text_color }};
+  {{ macros.borders(content.file_upload.hover_borders) }}
+}
+%%SELECTOR%% .ff-el-repeater {
+  background-color: {{ content.repeater.background }};
+  width: {{ content.repeater.width.style }};
+  {{ macros.spacing_padding_all(content.repeater.padding) }}
+  {{ macros.borders(content.repeater.borders) }}
+}
+%%SELECTOR%% .ff-el-input--label label {
+  {{ macros.typography(content.repeater.field_labels, globalSettings) }}
+}
+%%SELECTOR%% .ff_repeater_table th .ff-el-input--label label {
+  {{ macros.typography(content.repeater.column_labels, globalSettings) }}
+}
+%%SELECTOR%% table.ff_repeater_table input,
+%%SELECTOR%% table.ff_repeater_table select {
+  background-color: {{ content.repeater.background }};
+  {{ macros.typography(content.repeater.typography, globalSettings) }}
+  {{ macros.borders(content.repeater.borders) }}
+}
+%%SELECTOR%% table.ff_repeater_table input:focus,
+%%SELECTOR%% table.ff_repeater_table select:focus {
+  background-color: {{ content.repeater.focus_background }};
+  color: {{ content.repeater.focus_text_color }};
+  {{ macros.typography(content.repeater.focus_typography, globalSettings) }};
+  {{ macros.borders(content.repeater.focus_borders) }}
+}
+%%SELECTOR%% table.ff_repeater_table td {
+  padding-right: {{ content.repeater.horizontal_gap.style }};
+  padding-bottom: {{ content.repeater.vertical_gap.style }};
+}
+%%SELECTOR%% .repeat-plus svg,
+%%SELECTOR%% .repeat-minus svg{
+  width: {{ content.repeater.size.style }};
+  height: {{ content.repeater.size.style }};
+}
+%%SELECTOR%% .repeat-plus svg{
+  color: {{ content.repeater.plus_color }};
+}
+%%SELECTOR%% .repeat-minus svg{
+  color: {{ content.repeater.minus_color }}
+}
+%%SELECTOR%% .repeat-plus:hover svg{
+  color: {{ content.repeater.plus_hover_color }};
+}
+%%SELECTOR%% .repeat-minus:hover svg{
+  color: {{ content.repeater.minus_hover_color }};
+}
+%%SELECTOR%% .ff_net_table tbody tr td label:hover:after{
+  background-color: {{ content.net_promoter_score.hover_background_color }};
+  border-color: {{ content.net_promoter_score.hover_border_color }};
+  border-width: {{ content.net_promoter_score.hover_border_width.style }};
+}
+%%SELECTOR%% .ff_net_table tbody tr td,
+%%SELECTOR%% .ff_net_table tbody tr td:first-of-type{
+  border-color: {{ content.net_promoter_score.border_color }};
+  border-width: {{ content.net_promoter_score.border_width.style }};
+}
+%%SELECTOR%% .ff_net_table thead th span {
+  color: {{ content.net_promoter_score.sub_label_color }};
+}
+%%SELECTOR%% .ff_net_table tbody tr td {
+  background-color: {{ content.net_promoter_score.cell_background_color }};
+}
+%%SELECTOR%% .ff-el-net-label span {
+  color: {{ content.net_promoter_score.number_color }}
+}
+%%SELECTOR%% .ff-el-net-label:hover span {
+  color: {{ content.net_promoter_score.hover_number_color }}
+}
+%%SELECTOR%% .ff_net_table tbody tr td input[type=radio]:checked+label * {
+  color: {{ content.net_promoter_score.checked_number_color }}
+}
+%%SELECTOR%% .ff_net_table tbody tr td input[type=radio]:checked+label {
+  background-color: {{ content.net_promoter_score.checked_background_color }}
+}
+%%SELECTOR%% .ff_dynamic_payment_summary .ffp_table{
+  background-color: {{ content.payment_summary.background_color }};
+  {{ macros.borders(content.payment_summary.borders) }}
+}
+%%SELECTOR%% .ff_dynamic_payment_summary .ffp_table thead{
+  background-color: {{ content.payment_summary.th_bg_color }}
+  {{ macros.typography(content.payment_summary.th_typography, globalSettings) }}
+}
+%%SELECTOR%% table.input_items_table thead tr th {
+  {{ macros.borders(content.payment_summary.th_borders) }} 
 }
 {% if isBuilder %}
 .ue-ff-styler .fluentform .has-conditions {
