@@ -1,0 +1,14 @@
+.ue-breadcrumbs .breadcrumbs-navxt, 
+.ue-breadcrumbs #breadcrumbs > span, 
+.ue-breadcrumbs .rank-math-breadcrumb p, 
+.ue-breadcrumbs .aioseo-breadcrumbs, 
+.ue-breadcrumbs .breadcrumbs-slim .breadcrumbs,
+.ue-breadcrumbs-zynith .breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 3px;
+}
+.ue-breadcrumbs .separator, 
+.ue-breadcrumbs .breadcrumbs-slim .breadcrumbs__separator{line-height: 1}
+.ue-breadcrumbs .breadcrumb{padding: 0}

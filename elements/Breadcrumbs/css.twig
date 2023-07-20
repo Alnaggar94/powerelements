@@ -1,0 +1,67 @@
+{% if content.general.gap_between_links.style %}
+%%SELECTOR%% #breadcrumbs > span, 
+%%SELECTOR%% .rank-math-breadcrumb p, 
+%%SELECTOR%% .aioseo-breadcrumbs, 
+%%SELECTOR%% .breadcrumbs{ 
+  column-gap: {{ content.general.gap_between_links.style }};
+}
+{% endif %}
+
+%%SELECTOR%%,
+%%SELECTOR%% a { 
+  {{ macros.typography(content.general.typography, globalSettings) }}
+}
+
+{% if content.general.link_color %}
+%%SELECTOR%% a { 
+	color: {{ content.general.link_color }};
+}
+{% endif %}
+
+{% if content.general.link_hover_color %}
+%%SELECTOR%% a:hover { 
+	color: {{ content.general.link_hover_color }};
+}
+{% endif %}
+{% if content.general.seo_plugin != 'allinone' %}
+%%SELECTOR%% .breadcrumb_last, 
+%%SELECTOR%% .current-item,
+%%SELECTOR%% .current, 
+%%SELECTOR%% .breadcrumb-item.active, 
+%%SELECTOR%% .breadcrumb--last {
+  {% if content.general.current_item_color %}
+  color: {{ content.general.current_item_color }};
+  {% endif %}
+  font-weight: {{ content.general.current_item_font_weight|default(600) }};
+}
+{% endif %}
+{% if content.general.seo_plugin == 'seopress' %}
+%%SELECTOR%% .breadcrumb li::after {
+  {% if content.general.separator_color %}
+  color: {{ content.general.separator_color }};
+  fill: {{ content.general.separator_color }};
+  {% endif %}
+  {% if content.general.separator_size.style %}
+  font-size: {{ content.general.separator_size.style }};
+  {% endif %}
+}
+{% endif %}
+
+{% if content.general.seo_plugin in ['rankmath', 'yoast', 'allinone'] %}
+%%SELECTOR%% .separator {
+  font-size: {{ content.separator.size.style }};
+  color: {{ content.separator.color }};
+  fill: {{ content.separator.color }};
+}
+{% endif %}
+{% if content.general.seo_plugin == 'slim' %}
+%%SELECTOR%% .breadcrumbs__separator {
+  {% if content.settings.separator_size.style %}
+  font-size: {{ content.settings.separator_size.style }};
+  {% endif %}
+  {% if content.settings.separator_color %}
+  color: {{ content.settings.separator_color }};
+  fill: {{ content.settings.separator_color }}
+  {% endif %}
+}
+{% endif %}
