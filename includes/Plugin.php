@@ -244,4 +244,8 @@ class Plugin {
 
 		return $fforms;
     }
+
+	public static function ue_rank_math_crumbs_html( $html, $crumbs, $object ) {
+		return str_replace( 'class="last"', 'class="last breadcrumb_last"', $html );
+	}
 }
