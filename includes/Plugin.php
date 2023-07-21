@@ -220,7 +220,7 @@ class Plugin {
 			"frontendCondition" => $condition,
 			"builderCondition" => "return false;",
 			"scripts" => [
-				$this->project_root_url . 'elements/Off_Canvas/assets/offcanvas.min.js?ver=' . time()
+				$this->project_root_url . 'elements/Off_Canvas/assets/offcanvas.min.js?ver=0.1'
 			]
 		];
 
@@ -230,7 +230,7 @@ class Plugin {
 			"frontendCondition" => $condition,
 			"builderCondition" => "return false;",
 			"scripts" => [
-				$this->project_root_url . 'elements/AnimatedBurger/assets/animated-burger.min.js?ver=' . time()
+				$this->project_root_url . 'elements/AnimatedBurger/assets/animated-burger.min.js?ver=0.1'
 			]
 		];
 
