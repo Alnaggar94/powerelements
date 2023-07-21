@@ -1,0 +1,30 @@
+.ue-post-terms {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ue-post-terms .ue-terms-prefix {
+  display: inline-block;
+  margin-right: 5px;
+}
+.ue-post-terms .ue-term-name { 
+  display:inline-flex; 
+  padding: 3px; 
+  align-items: center; 
+  justify-content: center;
+  text-decoration: none;
+}
+.ue-post-terms .ue-term-icon {
+  display: inline-flex;
+  font-size: 15px;
+}
+.ue-post-terms .ue-term-icon svg {
+  font-size: inherit;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  margin-right: 7px;
+}

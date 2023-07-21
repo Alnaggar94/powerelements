@@ -1,0 +1,31 @@
+%%SELECTOR%% .ue-term-name { 
+  {% if content.style.background %}
+  background-color: {{ content.style.background }};
+  {% endif %}
+  {{ macros.typography(content.style.terms_typography, globalSettings) }};
+  {% if content.style.color %}
+  color: {{ content.style.color }}!important;
+  {% endif %}
+  {{ macros.spacing_all(content.style.spacing) }};
+  flex-direction: {{ content.icon.position|default('row') }};
+  {{ macros.borders(content.style.borders) }}
+}
+
+%%SELECTOR%% .ue-term-name:hover {
+   {% if content.style.hover_background %}
+  background-color: {{ content.style.hover_background }}!important;
+  {% endif %}
+  {% if content.style.hover_color %}
+  color: {{ content.style.hover_color }}!important;
+  {% endif %}
+}
+
+%%SELECTOR%% .ue-terms-prefix {
+  {{ macros.typography(content.style.prefix_typography, globalSettings) }}
+}
+
+%%SELECTOR%% .ue-term-icon {
+	{{ macros.spacing_margin_x(content.icon.gap) }} 
+}
+
+{{ macros.atomV1IconCss(content.icon.icon_style, 'ue-term-icon', '%%SELECTOR%%', true) }}
