@@ -72,27 +72,27 @@ class Plugin {
 
         add_action( 'plugins_loaded', 	[ $this, 'on_plugins_loaded' ] );
         add_action('breakdance_loaded', function () {
-			\Breakdance\ElementStudio\registerSaveLocation(
-				\Breakdance\Util\getDirectoryPathRelativeToPluginFolder( dirname( $this->plugin_file ) ) . '/elements',
-				'Upadans',
-				'element',
-				'Upadans',
-				false
-			);
+		\Breakdance\ElementStudio\registerSaveLocation(
+			\Breakdance\Util\getDirectoryPathRelativeToPluginFolder( dirname( $this->plugin_file ) ) . '/elements',
+			'Upadans',
+			'element',
+			'Upadans',
+			true
+		);
 
-			add_filter('breakdance_element_dependencies', [ $this, 'addDependencies' ], 100, 1);
-		}, 9 );
+		add_filter('breakdance_element_dependencies', [ $this, 'addDependencies' ], 100, 1);
+	}, 9 );
 
         if( function_exists( 'wpFluentForm' ) ) {
-			add_action('breakdance_loaded', function () {
-				\Breakdance\AJAX\register_handler(
-					'ue_get_fluentforms',
-					[ $this, 'getFluentForms' ],
-					'edit',
-					true
-				);
-			});
-		}
+		add_action('breakdance_loaded', function () {
+			\Breakdance\AJAX\register_handler(
+				'ue_get_fluentforms',
+				[ $this, 'getFluentForms' ],
+				'edit',
+				true
+			);
+		});
+	}
     }
 
     /**
