@@ -22,6 +22,7 @@ General Elements
 * Breadcrumbs
 * Off Canvas
 * Fluent Form Styler (Inprogress)
+* Post Terms (In progress)
 
 ## Changelog
 
