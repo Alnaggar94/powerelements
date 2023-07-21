@@ -69,32 +69,37 @@ class Plugin {
         $this->version           = $this->plugin_data['Version'];
 
         self::$instance = $this;
-	    
+
         add_action( 'plugins_loaded', 	[ $this, 'on_plugins_loaded' ] );
         add_action('breakdance_loaded', function () {
-		\Breakdance\ElementStudio\registerSaveLocation(
-			\Breakdance\Util\getDirectoryPathRelativeToPluginFolder( dirname( $this->plugin_file ) ) . '/elements',
-			'Upadans',
-			'element',
-			'Upadans',
-			true
-		);
+			\Breakdance\ElementStudio\registerSaveLocation(
+				\Breakdance\Util\getDirectoryPathRelativeToPluginFolder( dirname( $this->plugin_file ) ) . '/elements',
+				'Upadans',
+				'element',
+				'Upadans',
+				false
+			);
 
-		add_filter('breakdance_element_dependencies', [ $this, 'addDependencies' ], 100, 1);
-	}, 9 );
+			add_filter('breakdance_element_dependencies', [ $this, 'addDependencies' ], 100, 1);
+		}, 9 );
 
         if( function_exists( 'wpFluentForm' ) ) {
-		add_action('breakdance_loaded', function () {
-			\Breakdance\AJAX\register_handler(
-				'ue_get_fluentforms',
-				[ $this, 'getFluentForms' ],
-				'edit',
-				true
-			);
-		});
-	}
+			add_action('breakdance_loaded', function () {
+				\Breakdance\AJAX\register_handler(
+					'ue_get_fluentforms',
+					[ $this, 'getFluentForms' ],
+					'edit',
+					true
+				);
+			});
+		}
     }
 
+    /**
+     * Will check builder pages
+     *
+     * @return array
+     */
 	public function ue_style_post_state ($post_states, $post) {
 		if( isset( $post_states['breakdance'] ) ) {
 			if( current_user_can( 'edit_posts', $post->ID ) ) {
@@ -202,6 +207,11 @@ class Plugin {
 		return get_plugin_data( $path );
 	}
 
+	/**
+	 * Loading element specific dependencies
+	 * 
+	 * @return array $deps
+	 */
 	public function addDependencies( $deps ) {
 
     	$condition = "return !!'{{content.panel.position}}';";
@@ -228,6 +238,11 @@ class Plugin {
 
     }
 
+    /**
+     * Get all fluent forms
+     * 
+     * @return array $fforms
+     */
     public function getFluentForms() {
     	if( ! function_exists( 'wpFluentForm' ) )
     		return [];
@@ -247,5 +262,13 @@ class Plugin {
 
 	public static function ue_rank_math_crumbs_html( $html, $crumbs, $object ) {
 		return str_replace( 'class="last"', 'class="last breadcrumb_last"', $html );
+	}
+
+	/**
+	 * Is on builder editor
+	 * @return true|false
+	 */
+	public static function isBuilderEditor() {
+		return ( isset( $_SERVER['HTTP_REFERER'] ) && strstr( $_SERVER['HTTP_REFERER'], 'breakdance' ) );
 	}
 }
