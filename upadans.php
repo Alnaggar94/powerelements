@@ -30,6 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	return;
 }
 
-require dirname( __FILE__ ) . '/includes/Plugin.php';
+require_once __DIR__ . '/includes/Plugin.php';
+require_once __DIR__ . "/includes/ueacrdmenuwalker.php";
 
 new Upadans\Plugin( __FILE__, __DIR__ );
