@@ -71,28 +71,28 @@ class Plugin {
         self::$instance = $this;
 
         add_action( 'plugins_loaded', 	[ $this, 'on_plugins_loaded' ] );
-        add_action('breakdance_loaded', function () {
-		\Breakdance\ElementStudio\registerSaveLocation(
-			\Breakdance\Util\getDirectoryPathRelativeToPluginFolder( dirname( $this->plugin_file ) ) . '/elements',
-			'Upadans',
-			'element',
-			'Upadans',
-			true
-		);
-
-		add_filter('breakdance_element_dependencies', [ $this, 'addDependencies' ], 100, 1);
-	}, 9 );
-
-        if( function_exists( 'wpFluentForm' ) ) {
 		add_action('breakdance_loaded', function () {
-			\Breakdance\AJAX\register_handler(
-				'ue_get_fluentforms',
-				[ $this, 'getFluentForms' ],
-				'edit',
+			\Breakdance\ElementStudio\registerSaveLocation(
+				\Breakdance\Util\getDirectoryPathRelativeToPluginFolder( dirname( $this->plugin_file ) ) . '/elements',
+				'Upadans',
+				'element',
+				'Upadans',
 				true
 			);
+			add_filter('breakdance_element_dependencies', [ $this, 'addDependencies' ], 100);
+		}, 9 );
+
+		
+		add_action('breakdance_loaded', function () {
+			if( function_exists( 'wpFluentForm' ) ) {
+				\Breakdance\AJAX\register_handler(
+					'ue_get_fluentforms',
+					[ $this, 'getFluentForms' ],
+					'edit',
+					true
+				);
+			}
 		});
-	}
     }
 
     /**
@@ -122,6 +122,9 @@ class Plugin {
     	load_plugin_textdomain( 'upadans', false, $this->project_root_path . '/languages' );
 
     	\Breakdance\Elements\registerCategory('interactive', 'Interactive');
+    	if( class_exists('WooCommerce') ) {
+    		\Breakdance\Elements\registerCategory('uwoo', 'Interactive Woo');
+    	}
 
     	add_filter( 'display_post_states', [ $this, 'ue_style_post_state' ], 15, 2 );
     }
@@ -213,40 +216,34 @@ class Plugin {
 	 * @return array $deps
 	 */
 	public function addDependencies( $deps ) {
-
-    	$condition = "return !!'{{content.panel.position}}';";
-
-		$deps[] = [
-			"frontendCondition" => $condition,
+    	$deps[] = [
+			"frontendCondition" => "return !!'{{content.panel.position}}';",
 			"builderCondition" => "return false;",
 			"scripts" => [
-				$this->project_root_url . 'elements/Off_Canvas/assets/offcanvas.min.js?ver=0.1'
+				$this->project_root_url . 'elements/Off_Canvas/assets/offcanvas.min.js?ver=' . $this->version
 			]
 		];
 
-		$condition = "return !!'{{content.burger_options.effect}}';";
-
 		$deps[] = [
-			"frontendCondition" => $condition,
+			"frontendCondition" => "return !!'{{content.burger_options.effect}}';",
 			"builderCondition" => "return false;",
 			"scripts" => [
-				$this->project_root_url . 'elements/AnimatedBurger/assets/animated-burger.min.js?ver=0.1'
+				$this->project_root_url . 'elements/AnimatedBurger/assets/animated-burger.min.js?ver=' . $this->version
 			]
 		];
 
     	return $deps;
-
     }
 
-    /**
-     * Get all fluent forms
-     * 
-     * @return array $fforms
-     */
-    public function getFluentForms() {
-    	if( ! function_exists( 'wpFluentForm' ) )
-    		return [];
-    	
+	/**
+	 * Get all fluent forms
+	 * 
+	 * @return array $fforms
+	 */
+	public function getFluentForms() {
+		if( ! function_exists( 'wpFluentForm' ) )
+			return [];
+		
 		$ff_list = \FluentForm\App\Models\Form::select(['id', 'title'])->orderBy('id', 'DESC')->get();
 		if( $ff_list ) {
 			$fforms[]= [ 'value' => 'none', 'text' => esc_html__('Select a Fluent Forms', 'fluentform')];
@@ -258,7 +255,7 @@ class Plugin {
 		}
 
 		return $fforms;
-    }
+	}
 
 	public static function ue_rank_math_crumbs_html( $html, $crumbs, $object ) {
 		return str_replace( 'class="last"', 'class="last breadcrumb_last"', $html );
