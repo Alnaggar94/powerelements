@@ -18,10 +18,11 @@ Below are listed the core competencies
 
 General Elements
 ----------------
+* Accordion Menu (In Progress)
 * Animated Burger
 * Breadcrumbs
 * Off Canvas
-* Fluent Form Styler (Inprogress)
+* Fluent Form Styler (In Progress)
 * Post Terms
 
 ## Changelog
