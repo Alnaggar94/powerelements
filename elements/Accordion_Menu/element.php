@@ -70,7 +70,7 @@ class AccordionMenu extends \Breakdance\Elements\Element
 
     static function defaultProperties()
     {
-        return ['content' => ['general' => ['source' => 'menu', 'wp_menu' => '', 'taxonomy' => 'category', 'orderby' => 'name', 'order' => 'ASC', 'transition' => 400], 'toggle_icon'=>['icon'=>['slug' => 'icon-chevron-right.', 'name' => 'chevron right', 'svgCode' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg>']]]];
+        return ['content' => ['general' => ['source' => 'menu', 'wp_menu' => '', 'taxonomy' => 'category', 'orderby' => 'name', 'order' => 'ASC', 'transition' => 400], 'toggle_icon' => ['icon' => ['slug' => 'icon-chevron-down.', 'name' => 'chevron down', 'svgCode' => '<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>']]]];
     }
 
     static function defaultChildren()
@@ -206,15 +206,143 @@ class AccordionMenu extends \Breakdance\Elements\Element
       ), c(
         "menu_heading",
         "Menu Heading",
+        [c(
+        "display_menu_name",
+        "Display menu name",
         [],
-        ['type' => 'section', 'layout' => 'vertical'],
+        ['type' => 'toggle', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), c(
+        "html_tag",
+        "HTML Tag",
+        [],
+        ['type' => 'dropdown', 'layout' => 'inline', 'items' => ['0' => ['value' => 'h1', 'text' => 'H1'], '1' => ['text' => 'H2', 'value' => 'h2'], '2' => ['text' => 'H3', 'value' => 'h3'], '3' => ['text' => 'H4', 'value' => 'h4'], '4' => ['text' => 'H5', 'value' => 'h5'], '5' => ['text' => 'H6', 'value' => 'h6'], '6' => ['text' => 'DIV', 'value' => 'div']], 'placeholder' => 'H4'],
+        false,
+        false,
+        [],
+      ), c(
+        "background",
+        "Background",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), getPresetSection(
+      "EssentialElements\\typography",
+      "Typography",
+      "typography",
+       ['type' => 'popout']
+     ), getPresetSection(
+      "EssentialElements\\borders",
+      "Borders",
+      "borders",
+       ['type' => 'popout']
+     ), getPresetSection(
+      "EssentialElements\\spacing_all",
+      "Spacing",
+      "spacing",
+       ['type' => 'popout']
+     )],
+        ['type' => 'section', 'layout' => 'vertical', 'condition' => ['0' => ['0' => ['path' => 'content.general.source', 'operand' => 'equals', 'value' => 'menu']]]],
         false,
         false,
         [],
       ), c(
         "menu_items",
         "Menu Items",
+        [c(
+        "background",
+        "Background",
         [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), c(
+        "flex_grow",
+        "Flex grow",
+        [],
+        ['type' => 'number', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), getPresetSection(
+      "EssentialElements\\spacing_padding_all",
+      "Padding",
+      "padding",
+       ['type' => 'popout']
+     ), getPresetSection(
+      "EssentialElements\\typography",
+      "Typography",
+      "typography",
+       ['type' => 'popout']
+     ), getPresetSection(
+      "EssentialElements\\borders",
+      "Borders",
+      "borders",
+       ['type' => 'popout']
+     ), c(
+        "hover",
+        "Hover",
+        [],
+        ['type' => 'alert_box', 'layout' => 'vertical', 'alertBoxOptions' => ['style' => 'default', 'content' => '<p>Hover style</p>']],
+        false,
+        false,
+        [],
+      ), c(
+        "background",
+        "Background",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), c(
+        "link_color",
+        "Link color",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), getPresetSection(
+      "EssentialElements\\borders",
+      "Borders",
+      "borders",
+       ['type' => 'popout']
+     ), c(
+        "current_item_style",
+        "Current item style",
+        [],
+        ['type' => 'alert_box', 'layout' => 'vertical', 'alertBoxOptions' => ['style' => 'default', 'content' => '<p>Current item style</p>']],
+        false,
+        false,
+        [],
+      ), c(
+        "background",
+        "Background",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), c(
+        "link_color",
+        "Link color",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), getPresetSection(
+      "EssentialElements\\borders",
+      "Borders",
+      "borders",
+       ['type' => 'popout']
+     )],
         ['type' => 'section', 'layout' => 'vertical'],
         false,
         false,
@@ -222,7 +350,38 @@ class AccordionMenu extends \Breakdance\Elements\Element
       ), c(
         "sub_menu_items",
         "Sub Menu Items",
+        [c(
+        "text_indent",
+        "Text indent",
         [],
+        ['type' => 'number', 'layout' => 'inline', 'rangeOptions' => ['min' => 0, 'max' => 100, 'step' => 1]],
+        false,
+        false,
+        [],
+      ), c(
+        "background",
+        "Background",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), getPresetSection(
+      "EssentialElements\\spacing_padding_all",
+      "Padding",
+      "padding",
+       ['type' => 'popout']
+     ), getPresetSection(
+      "EssentialElements\\typography",
+      "Typography",
+      "typography",
+       ['type' => 'popout']
+     ), getPresetSection(
+      "EssentialElements\\borders",
+      "Borders",
+      "borders",
+       ['type' => 'popout']
+     )],
         ['type' => 'section', 'layout' => 'vertical'],
         false,
         false,
@@ -311,7 +470,7 @@ class AccordionMenu extends \Breakdance\Elements\Element
 
     static function dynamicPropertyPaths()
     {
-        return ['0' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '1' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '2' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '3' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '4' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string']];
+        return ['0' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '1' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '2' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '3' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '4' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '5' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string']];
     }
 
     static function additionalClasses()
