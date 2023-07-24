@@ -30,6 +30,7 @@ General Elements
 ### 0.2 - 2023-07-22
 * New element - Breadcrumbs
 * New element - Post Terms
+* New element - Accordion Menu
 
 ### 0.1 - 2023-07-18
 * Initial Public Release
