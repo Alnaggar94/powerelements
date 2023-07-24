@@ -232,6 +232,15 @@ class Plugin {
 			]
 		];
 
+		$deps[] = [
+			"frontendCondition" => "return !!'{{content.general.source}}';",
+			"builderCondition" => "return !!'{{content.general.source}}';",
+			"scripts" => [
+				$this->project_root_url . 'elements/Accordion_Menu/assets/accordion-menu.min.js?ver=' . filemtime($this->project_root_path . 'elements/Accordion_Menu/assets/accordion-menu.min.js'),
+				$this->project_root_url . 'assets/js/upadans.global.min.js?ver=' . filemtime($this->project_root_path . 'assets/js/upadans.global.min.js')
+			]
+		];
+
     	return $deps;
     }
 
