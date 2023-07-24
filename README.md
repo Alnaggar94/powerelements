@@ -18,7 +18,7 @@ Below are listed the core competencies
 
 General Elements
 ----------------
-* Accordion Menu (In Progress)
+* Accordion Menu
 * Animated Burger
 * Breadcrumbs
 * Off Canvas
