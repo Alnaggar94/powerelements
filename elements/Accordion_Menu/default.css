@@ -48,8 +48,9 @@
 }
 .ue-acrd-menu .ue-menu-items-arrow {
     border-left: 1px solid rgba(172, 170, 170, 0.2);
-    color: #aaa;
+  	color: #aaa;
     cursor: pointer;
+  	font-size: 20px;
     margin: 0;
     width: 50px;
     display: flex;
@@ -72,6 +73,17 @@
 .ue-acrd-arrow-flip .ue-menu-items-arrow.acrd-menu-open::before {
     transform: rotateX(-180deg)!important;
 }
+.ue-acrd-menu-items li:not(.menu-item-has-children) .ue-menu-items-arrow {
+    display: none;
+}
+.ue-acrd-menu .ue-menu-items-arrow svg {
+  font-size: inherit;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
 .ue-acrd-menu .current-menu-ancestor > a,
 .ue-acrd-menu .current-menu-item > a,
 .ue-acrd-menu a:hover {
@@ -83,16 +95,6 @@
 .ue-acrd-menu a:hover .ue-menu-items-arrow {
     background-color: #f7f7f7;
 }
-
-.ue-acrd-menu-icon-svg svg {
-  font-size: inherit;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-}
-
 .ue-acrd-menu .sub-menu {
     display: none;
     transition-timing-function: linear;
@@ -103,15 +105,7 @@
     text-align: center;
     padding: 10px 12px;
 }
+.ue-acrd-menu .ue-acrd-menu-title,
 .ue-acrd-menu-items li {
     margin: 0;
-}
-.ue-acrd-menu-items li:not(.menu-item-has-children) .ue-menu-items-arrow {
-    display: none;
-}
-.ue-acrd-menu-icon {
-    display: inline-block;
-    width: auto;
-    float: left;
-    margin-right: 8px;
 }

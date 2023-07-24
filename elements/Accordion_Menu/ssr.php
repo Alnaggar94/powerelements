@@ -2,14 +2,15 @@
 $settings = $propertiesData['content'];
 $text_indent = isset( $settings['general']['text_indent'] ) ? $settings['general']['text_indent'] : 10;
 $source = isset( $settings['general']['source'] ) ? $settings['general']['source'] : 'menu';
-$dataAtts['transition'] = isset( $settings['general']['transition'] ) ? $settings['general']['transition'] : 400;
-$dataAtts['effect'] = !empty( $settings['general']['isAccordion'] ) ? 'yes' : 'no';
-$dataAtts['collapsed'] = !empty( $settings['general']['always_collapsed'] ) ? 'yes' : 'no';
+$config['df'] = '';
+$config['transition'] = isset( $settings['general']['transition'] ) ? $settings['general']['transition'] : 400;
+$config['effect'] = !empty( $settings['general']['isAccordion'] ) ? 'yes' : 'no';
+$config['collapsed'] = !empty( $settings['general']['always_collapsed'] ) ? 'yes' : 'no';
 
 // Icon
 $icon_html = '';
 if ( isset( $settings['toggle_icon']['icon']['svgCode'] ) ) {
-	$icon_html = '<span class="icon ue-menu-items-arrow ue-acrd-menu-icon-svg">' . $settings['toggle_icon']['icon']['svgCode'] . '</span>';
+	$icon_html = '<span class="ue-menu-items-arrow">' . $settings['toggle_icon']['icon']['svgCode'] . '</span>';
 }
 
 $GLOBALS[ 'arrow_btn' ] = $icon_html;
@@ -27,6 +28,11 @@ if( $source == 'menu' ) {
 		return;
 	}
 
+	if( ! empty( $settings['menu_heading']['display_menu_name'] ) && ! empty( $acrd_menu ) ) {
+		$tag = isset( $settings['menu_heading']['html_tag'] ) ? $settings['menu_heading']['html_tag'] : 'h4';
+		echo '<' . $tag . ' class="ue-acrd-menu-title">'. wp_get_nav_menu_object($acrd_menu)->name . '</' . $tag .'>';
+	}
+
 	$args = array(
 		'echo'        => false,
 		'menu'        => $acrd_menu,
@@ -38,17 +44,23 @@ if( $source == 'menu' ) {
 		'text_indent' => absint( $text_indent )
 	);
 
-	$menu = '<nav itemscope="" itemtype="https://schema.org/SiteNavigationElement" data-acrd-config="'. wp_json_encode($dataAtts ) . '">';
+	add_filter( 'nav_menu_item_args', '\Upadans\ue_acrd_menu_items_args', 10, 3 );
+	add_filter( 'nav_menu_link_attributes', '\Upadans\ue_acrdmenu_link_attributes', 10, 4 );
+
+	$menu = '<nav itemscope itemtype="https://schema.org/SiteNavigationElement" data-acrd-config=\'' . wp_json_encode($config ) . '\'>';
 	$menu .= wp_nav_menu( $args );
 	$menu .= '</nav>';
 
 	echo $menu;
+
+	remove_filter( 'nav_menu_item_args', '\Upadans\ue_acrd_menu_items_args', 10, 3 );
+	remove_filter( 'nav_menu_link_attributes', '\Upadans\ue_acrdmenu_link_attributes', 10, 4 );
 }
 /**
  * Taxonomy
  */
 if( $source == 'tax' ) {
-	$menu = '<nav itemscope="" itemtype="https://schema.org/SiteNavigationElement" data-acrd-config="'. wp_json_encode($dataAtts ) . '">';
+	$menu = '<nav itemscope="" itemtype="https://schema.org/SiteNavigationElement" data-acrd-config="'. wp_json_encode($config ) . '">';
 	$menu .= '<ul id="menu-%%ID%%" class="ue-acrd-menu-items">';
 
 	$taxonomy = isset( $settings['general']['taxonomy'] ) ? $settings['general']['taxonomy'] : 'category';

@@ -1,1 +1,122 @@
-%%SELECTOR%% { }
+%%SELECTOR%% .ue-acrd-menu-title { 
+  {% if content.menu_heading.background %}
+  background-color: {{ content.menu_heading.background }};
+  {% endif %}
+  {{ macros.typography(content.menu_heading.typography, globalSettings) }}
+  {{ macros.borders(content.menu_heading.borders) }}
+  {{ macros.spacing_all(content.menu_heading.spacing) }}
+}
+%%SELECTOR%% .ue-menu-item-text {
+  {{ macros.spacing_padding_all(content.menu_items.padding) }}
+  {{ macros.typography(content.menu_items.typography, globalSettings) }}
+  {% if content.menu_items.flex_grow %}
+  flex-grow: {{ content.menu_items.flex_grow }};
+  {% endif %}
+}
+%%SELECTOR%% .menu-item a {
+  {% if content.menu_items.background %}
+  background-color: {{ content.menu_items.background }};
+  {% endif %}
+  {{ macros.borders(content.menu_items.borders) }}
+}
+%%SELECTOR%% .menu-item a:hover {
+  {% if content.menu_items.hover_background %}
+  background-color: {{ content.menu_items.hover_background }};
+  {% endif %}
+  {% if content.menu_items.link_color %}
+  color: {{ content.menu_items.link_color }};
+  {% endif %}
+  {{ macros.borders(content.menu_items.hover_borders) }}
+}
+%%SELECTOR%% .current-menu-item > a,
+%%SELECTOR%% .current-menu-ancestor > a {
+  {% if content.menu_items.current_background %}
+  background-color: {{ content.menu_items.current_background }};
+  {% endif %}
+  {% if content.menu_items.current_link_color %}
+  color: {{ content.menu_items.current_link_color }};
+  {% endif %}
+  {{ macros.borders(content.menu_items.current_borders) }}
+}
+
+%%SELECTOR%% .sub-menu .ue-menu-item-text {
+  {{ macros.spacing_padding_all(content.sub_menu_items.padding) }}
+  {{ macros.typography(content.sub_menu_items.typography, globalSettings) }}
+}
+{% if content.sub_menu_items.background %}
+%%SELECTOR%% .sub-menu,
+%%SELECTOR%% .sub-menu .menu-item a {
+  background-color: {{ content.sub_menu_items.background }};
+}
+{% endif %}
+%%SELECTOR%% .sub-menu .menu-item a {
+  {{ macros.borders(content.sub_menu_items.borders) }}
+}
+%%SELECTOR%% .sub-menu .menu-item a:hover {
+  {% if content.sub_menu_items.hover_background %}
+  background-color: {{ content.sub_menu_items.hover_background }};
+  {% endif %}
+  {% if content.sub_menu_items.link_color %}
+  color: {{ content.sub_menu_items.link_color }};
+  {% endif %}
+  {{ macros.borders(content.sub_menu_items.hover_borders) }}
+}
+%%SELECTOR%% .sub-menu .current-menu-item > a,
+%%SELECTOR%% .sub-menu .current-menu-ancestor > a {
+  {% if content.sub_menu_items.current_background %}
+  background-color: {{ content.sub_menu_items.current_background }};
+  {% endif %}
+  {% if content.sub_menu_items.current_link_color %}
+  color: {{ content.sub_menu_items.current_link_color }};
+  {% endif %}
+  {{ macros.borders(content.sub_menu_items.current_borders) }}
+}
+
+%%SELECTOR%% .ue-menu-items-arrow {
+  {% if content.toggle_icon.background %}
+  background-color: {{ content.toggle_icon.background }};
+  {% endif %}
+  {% if content.toggle_icon.color %}
+  color: {{ content.toggle_icon.color }};
+  {% endif %}
+  {% if content.toggle_icon.size.style %}
+  font-size: {{ content.toggle_icon.size.style }};
+  {% endif %}
+  {% if content.toggle_icon.width.style %}
+  width: {{ content.toggle_icon.width.style }};
+  {% endif %}
+  {{ macros.borders_without_shadows(content.toggle_icon.borders) }}
+}
+
+%%SELECTOR%% a:hover .ue-menu-items-arrow {
+  {% if content.toggle_icon.hover_background %}
+  background-color: {{ content.toggle_icon.hover_background }};
+  {% endif %}
+  {% if content.toggle_icon.hover_icon_color %}
+  color: {{ content.toggle_icon.hover_icon_color }};
+  {% endif %}
+  {{ macros.borders_without_shadows(content.toggle_icon.hover_borders) }}
+}
+%%SELECTOR%% .current-menu-item > a .ue-menu-items-arrow,
+%%SELECTOR%% .current-menu-ancestor > a .ue-menu-items-arrow,
+%%SELECTOR%% .ue-menu-items-arrow.acrd-menu-open {
+  {% if content.toggle_icon.current_background %}
+  background-color: {{ content.toggle_icon.current_background }};
+  {% endif %}
+  {% if content.toggle_icon.current_icon_color %}
+  color: {{ content.toggle_icon.current_icon_color }};
+  {% endif %}
+  {{ macros.borders_without_shadows(content.toggle_icon.current_borders) }}
+}
+{% if content.hover_animation.transition_speed.style %}
+%%SELECTOR%% .menu-item a,
+%%SELECTOR%% .ue-menu-items-arrow,
+%%SELECTOR%% .ue-menu-item-text {
+  transition-duration: {{ content.hover_animation.transition_speed.style }};
+}
+{% endif %}
+{% if content.hover_animation.slide_to_right.style %}
+%%SELECTOR%% {
+  --menu-item-translatex: {{ content.hover_animation.slide_to_right.style }}
+}
+{% endif %}

@@ -70,7 +70,7 @@ class AccordionMenu extends \Breakdance\Elements\Element
 
     static function defaultProperties()
     {
-        return ['content' => ['general' => ['source' => 'menu', 'wp_menu' => '', 'taxonomy' => 'category', 'orderby' => 'name', 'order' => 'ASC', 'transition' => 400], 'toggle_icon' => ['icon' => ['slug' => 'icon-chevron-down.', 'name' => 'chevron down', 'svgCode' => '<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>']]]];
+        return ['content' => ['general' => ['source' => 'menu', 'wp_menu' => '', 'taxonomy' => 'category', 'orderby' => 'name', 'order' => 'ASC', 'transition' => 400], 'sub_menu_items' => ['text_indent' => 10], 'toggle_icon' => ['icon' => ['slug' => 'icon-chevron-down.', 'name' => 'chevron down', 'svgCode' => '<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>'], 'width' => 50]]];
     }
 
     static function defaultChildren()
@@ -293,7 +293,7 @@ class AccordionMenu extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "background",
+        "hover_background",
         "Background",
         [],
         ['type' => 'color', 'layout' => 'inline'],
@@ -311,7 +311,7 @@ class AccordionMenu extends \Breakdance\Elements\Element
       ), getPresetSection(
       "EssentialElements\\borders",
       "Borders",
-      "borders",
+      "hover_borders",
        ['type' => 'popout']
      ), c(
         "current_item_style",
@@ -322,7 +322,7 @@ class AccordionMenu extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "background",
+        "current_background",
         "Background",
         [],
         ['type' => 'color', 'layout' => 'inline'],
@@ -330,7 +330,7 @@ class AccordionMenu extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "link_color",
+        "current_link_color",
         "Link color",
         [],
         ['type' => 'color', 'layout' => 'inline'],
@@ -340,7 +340,7 @@ class AccordionMenu extends \Breakdance\Elements\Element
       ), getPresetSection(
       "EssentialElements\\borders",
       "Borders",
-      "borders",
+      "current_borders",
        ['type' => 'popout']
      )],
         ['type' => 'section', 'layout' => 'vertical'],
@@ -381,6 +381,64 @@ class AccordionMenu extends \Breakdance\Elements\Element
       "Borders",
       "borders",
        ['type' => 'popout']
+     ), c(
+        "hover",
+        "Hover",
+        [],
+        ['type' => 'alert_box', 'layout' => 'vertical', 'alertBoxOptions' => ['style' => 'default', 'content' => '<p>Hover style</p>']],
+        false,
+        false,
+        [],
+      ), c(
+        "hover_background",
+        "Background",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), c(
+        "hover_link_color",
+        "Link color",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), getPresetSection(
+      "EssentialElements\\borders",
+      "Borders",
+      "hover_borders",
+       ['type' => 'popout']
+     ), c(
+        "current",
+        "Current",
+        [],
+        ['type' => 'alert_box', 'layout' => 'vertical', 'alertBoxOptions' => ['style' => 'default', 'content' => '<p>Current item style</p>']],
+        false,
+        false,
+        [],
+      ), c(
+        "current_background",
+        "Background",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), c(
+        "current_link_color",
+        "Link color",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), getPresetSection(
+      "EssentialElements\\borders",
+      "Borders",
+      "current_borders",
+       ['type' => 'popout']
      )],
         ['type' => 'section', 'layout' => 'vertical'],
         false,
@@ -397,10 +455,100 @@ class AccordionMenu extends \Breakdance\Elements\Element
         false,
         false,
         [],
+      ), c(
+        "color",
+        "Color",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), c(
+        "size",
+        "Size",
+        [],
+        ['type' => 'unit', 'layout' => 'inline', 'rangeOptions' => ['min' => 20, 'max' => 500, 'step' => 1]],
+        false,
+        false,
+        [],
+      ), c(
+        "width",
+        "Width",
+        [],
+        ['type' => 'unit', 'layout' => 'inline', 'rangeOptions' => ['min' => 30, 'max' => 200, 'step' => 1]],
+        false,
+        false,
+        [],
+      ), c(
+        "background",
+        "Background",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
       ), getPresetSection(
-      "EssentialElements\\AtomV1IconDesign",
-      "Icon style",
-      "icon_style",
+      "EssentialElements\\borders_without_shadows",
+      "Borders",
+      "borders",
+       ['type' => 'popout']
+     ), c(
+        "hover",
+        "Hover",
+        [],
+        ['type' => 'alert_box', 'layout' => 'vertical', 'alertBoxOptions' => ['style' => 'default', 'content' => '<p>Hover style</p>']],
+        false,
+        false,
+        [],
+      ), c(
+        "hover_background",
+        "Background",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), c(
+        "hover_icon_color",
+        "Icon color",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), getPresetSection(
+      "EssentialElements\\borders_without_shadows",
+      "Borders",
+      "hover_borders",
+       ['type' => 'popout']
+     ), c(
+        "current",
+        "Current",
+        [],
+        ['type' => 'alert_box', 'layout' => 'vertical', 'alertBoxOptions' => ['style' => 'default', 'content' => '<p>Current item style</p>']],
+        false,
+        false,
+        [],
+      ), c(
+        "current_background",
+        "Background",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), c(
+        "current_icon_color",
+        "Icon color",
+        [],
+        ['type' => 'color', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      ), getPresetSection(
+      "EssentialElements\\borders_without_shadows",
+      "Borders",
+      "current_borders",
        ['type' => 'popout']
      )],
         ['type' => 'section', 'layout' => 'vertical'],
@@ -410,7 +558,23 @@ class AccordionMenu extends \Breakdance\Elements\Element
       ), c(
         "hover_animation",
         "Hover Animation",
+        [c(
+        "transition_speed",
+        "Transition speed",
         [],
+        ['type' => 'unit', 'layout' => 'inline', 'unitOptions' => ['types' => ['0' => 's'], 'defaultType' => 's'], 'rangeOptions' => ['min' => 0, 'max' => 10, 'step' => 0.1]],
+        false,
+        false,
+        [],
+      ), c(
+        "slide_to_right",
+        "Slide to right",
+        [],
+        ['type' => 'unit', 'layout' => 'inline', 'unitOptions' => ['types' => ['0' => 'px'], 'defaultType' => 'px'], 'rangeOptions' => ['min' => 0, 'max' => 50, 'step' => 1]],
+        false,
+        false,
+        [],
+      )],
         ['type' => 'section', 'layout' => 'vertical'],
         false,
         false,
@@ -440,7 +604,10 @@ class AccordionMenu extends \Breakdance\Elements\Element
 
     static public function actions()
     {
-        return false;
+        return [
+
+'onMountedElement' => [['script' => 'ueAccordionMenu("%%SELECTOR%%")',
+],],];
     }
 
     static function nestingRule()
@@ -470,7 +637,7 @@ class AccordionMenu extends \Breakdance\Elements\Element
 
     static function dynamicPropertyPaths()
     {
-        return ['0' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '1' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '2' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '3' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '4' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '5' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string']];
+        return ['0' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '1' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '2' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '3' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '4' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '5' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '6' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '7' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '8' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '9' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '10' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '11' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '12' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '13' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string']];
     }
 
     static function additionalClasses()
