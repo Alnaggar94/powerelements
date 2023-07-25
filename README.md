@@ -1,4 +1,4 @@
-### Upadans
+### Power Elements for Breakdance
 
 Contributors: Chinmoy Paul
 
@@ -12,7 +12,7 @@ Stable tag: 0.3
 
 Requires PHP: 7.4
 
-Upadnas is a third-party add-on for the Breakdance Builder which is built by [Paul Chinmoy](https://paulchinmoy.com), the creator of the famous Oxygen Plugin [OxyUltimate](https://oxyultimate.com/), this extension brings in addition to its free version, tools which are meant to help users build their WordPress websites in no-time.
+PowerElements is a third-party add-on for the Breakdance Builder which is built by [Paul Chinmoy](https://paulchinmoy.com), the creator of the famous Oxygen Plugin [OxyUltimate](https://oxyultimate.com/), this extension brings in addition to its free version, tools which are meant to help users build their WordPress websites in no-time.
 
 Below are listed the core competencies
 
