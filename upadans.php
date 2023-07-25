@@ -9,7 +9,7 @@
  * Author: 			Paul Chinmoy
  * Author URI: 		https://www.paulchinmoy.com
  * Tested up to:    6.2.2
- * Version: 		0.2
+ * Version: 		0.3
  *
  * License: 		GPLv2 or later
  * License URI: 	http://www.gnu.org/licenses/gpl-2.0.html
