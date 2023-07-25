@@ -32,7 +32,7 @@ WooCommerce Elements
 
 ## Changelog
 
-### 0.3 - 2023-07-22
+### 0.3 - 2023-07-25
 * New element - Coupon Form
 
 ### 0.2 - 2023-07-22
