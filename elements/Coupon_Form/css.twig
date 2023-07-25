@@ -1,1 +1,145 @@
-%%SELECTOR%% { }
+%%SELECTOR%% {
+  {% if content.layout.grid_template_columns %}
+  grid-template-columns: {{ content.layout.grid_template_columns }};
+  {% endif %}
+  {% if content.layout.gap.style %}
+  gap: {{ content.layout.gap.style }};
+  {% endif %}
+}
+%%SELECTOR%% .ue-coupon-inp-field{
+  {% if content.input_field.background %}
+  background-color: {{ content.input_field.background }};
+  {% endif %}
+  {{ macros.borders(content.input_field.borders) }}
+  {{ macros.typography(content.input_field.typography, globalSettings) }}
+  {{ macros.spacing_padding_all(content.input_field.padding) }}
+  {% if content.input_field.order %}
+  order: {{ content.input_field.order }};
+  {% endif %}
+  {% if content.input_field.width.style %}
+  width: {{ content.input_field.width.style }};
+  {% endif %}
+  {% if content.input_field.height.style %}
+  height: {{ content.input_field.height.style }};
+  {% endif %}
+}
+{% if content.input_field.placeholder %}
+%%SELECTOR%% .ue-coupon-inp-field::placeholder {
+  color: {{ content.input_field.placeholder }}
+}
+{% endif %}
+%%SELECTOR%% .ue-coupon-inp-field:focus {
+  {% if content.input_field.focus_background %}
+  background-color: {{ content.input_field.focus_background }};
+  {% endif %}
+  {% if content.input_field.focus_color %}
+  color: {{ content.input_field.focus_color }};
+  {% endif %}
+  {{ macros.borders(content.input_field.focus_borders) }}
+}
+%%SELECTOR%% .apply-coupon-button {
+  {% if content.apply_button.background %}
+  background-color: {{ content.apply_button.background }};
+  {% endif %}
+  {{ macros.borders(content.apply_button.borders) }}
+  {{ macros.typography(content.apply_button.typography, globalSettings) }}
+  {{ macros.spacing_all(content.apply_button.spacing) }}
+  {% if content.apply_button.width.style %}
+  width: {{ content.apply_button.width.style }};
+  {% endif %}
+  {% if content.apply_button.height.style %}
+  height: {{ content.apply_button.height.style }};
+  {% endif %}
+  {% if content.apply_button.order %}
+  order: {{ content.apply_button.order }}
+  {% endif %}
+}
+%%SELECTOR%% .apply-coupon-button:hover {
+  {% if content.apply_button.hover_background %}
+  background-color: {{ content.apply_button.hover_background }};
+  {% endif %}
+  {% if content.apply_button.hover_color %}
+  color: {{ content.apply_button.hover_color }};
+  {% endif %}
+  {{ macros.borders(content.apply_button.hover_borders) }}
+}
+
+{% if isBuilder and content.success_message.preview %}
+%%SELECTOR%% .woocommerce-message.ue-in-builder {
+  display: block;
+}
+{% else %}
+%%SELECTOR%% .woocommerce-message.ue-in-builder {
+  display: none;
+}
+{% endif %}
+
+{% if content.success_message.hide %}
+%%SELECTOR%% .woocommerce-message:not(.ue-in-builder) {
+  display: none;
+}
+{% else %}
+%%SELECTOR%% .woocommerce-message {
+  {% if content.success_message.background %}
+  background-color: {{ content.success_message.background }};
+  {% endif %}
+  {{ macros.spacing_padding_all(content.success_message.padding) }}
+  {{ macros.typography(content.success_message.typography, globalSettings) }}
+  {{ macros.borders(content.success_message.borders) }}
+  {% if content.success_message.order %}
+  order: {{ content.success_message.order }};
+  {% endif %}
+}
+{% endif %}
+
+{% if isBuilder and content.error_message.preview %}
+%%SELECTOR%% .woocommerce-error.ue-in-builder {
+  display: block;
+}
+{% else %}
+%%SELECTOR%% .woocommerce-error.ue-in-builder {
+  display: none;
+}
+{% endif %}
+
+{% if content.error_message.hide %}
+%%SELECTOR%% .woocommerce-error:not(.ue-in-builder) {
+  display: none;
+}
+{% else %}
+%%SELECTOR%% .woocommerce-error {
+  {% if content.error_message.background %}
+  background-color: {{ content.error_message.background }};
+  {% endif %}
+  {{ macros.spacing_padding_all(content.error_message.padding) }}
+  {{ macros.typography(content.error_message.typography, globalSettings) }}
+  {{ macros.borders(content.error_message.borders) }}
+  {% if content.error_message.order %}
+  order: {{ content.error_message.order }};
+  {% endif %}
+}
+{% endif %}
+%%SELECTOR%% label {
+  {{ macros.typography(content.label_animation.typography, globalSettings) }}
+  {% if content.label_animation.transition.style %}
+  transition-duration: {{ content.label_animation.transition.style }};
+  {% endif %}
+  {% if content.label_animation.position_left.style %}
+  left: {{ content.label_animation.position_left.style }};
+  {% endif %}
+}
+%%SELECTOR%% .ue-coupon-inp-field:focus ~ label,
+%%SELECTOR%% .ue-coupon-inp-field:valid ~ label {
+  {% if content.label_animation.background %}
+  background-color: {{ content.label_animation.background }};
+  {% endif %}
+  {% if content.label_animation.label_color %}
+  color: {{ content.label_animation.label_color }};
+  {% endif %}
+  {% if content.label_animation.font_size.style %}
+  font-size: {{ content.label_animation.font_size.style }};
+  {% endif %}
+  {% if content.label_animation.after_position_left.style %}
+  left: {{ content.label_animation.after_position_left.style }};
+  {% endif %}
+}

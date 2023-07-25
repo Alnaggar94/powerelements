@@ -70,7 +70,7 @@ class CouponForm extends \Breakdance\Elements\Element
 
     static function defaultProperties()
     {
-        return false;
+        return ['content'=>['layout'=>['hascouponform'=>true]]];
     }
 
     static function defaultChildren()
@@ -92,6 +92,38 @@ class CouponForm extends \Breakdance\Elements\Element
     static function contentControls()
     {
         return [c(
+        "layout",
+        "Layout",
+        [c(
+        "grid_template_columns",
+        "Grid template columns",
+        [],
+        ['type' => 'text', 'layout' => 'vertical', 'placeholder' => '65% 1fr'],
+        false,
+        false,
+        [],
+      ), c(
+        "gap",
+        "Gap",
+        [],
+        ['type' => 'unit', 'layout' => 'inline', 'unitOptions' => ['types' => ['0' => 'px', '1' => 'em', '2' => 'rem', '3' => '%', '4' => 'vh', '5' => 'vw', '6' => 'calc', '7' => 'auto', '8' => 'custom'], 'defaultType' => 'px']],
+        false,
+        false,
+        [],
+      ), c(
+        "hascouponform",
+        "hasCouponForm",
+        [],
+        ['type' => 'toggle', 'layout' => 'inline', 'hideForElements' => ['0' => 'Upadans\CouponForm']],
+        false,
+        false,
+        [],
+      )],
+        ['type' => 'section', 'layout' => 'vertical'],
+        false,
+        false,
+        [],
+      ), c(
         "input_field",
         "Input Field",
         [c(
@@ -166,7 +198,7 @@ class CouponForm extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "background",
+        "focus_background",
         "Background",
         [],
         ['type' => 'color', 'layout' => 'inline'],
@@ -174,7 +206,7 @@ class CouponForm extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "color",
+        "focus_color",
         "Color",
         [],
         ['type' => 'color', 'layout' => 'inline'],
@@ -184,7 +216,7 @@ class CouponForm extends \Breakdance\Elements\Element
       ), getPresetSection(
       "EssentialElements\\borders",
       "Borders",
-      "borders",
+      "focus_borders",
        ['type' => 'popout']
      )],
         ['type' => 'section', 'layout' => 'vertical'],
@@ -258,7 +290,7 @@ class CouponForm extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "background",
+        "hover_background",
         "Background",
         [],
         ['type' => 'color', 'layout' => 'inline'],
@@ -266,7 +298,7 @@ class CouponForm extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "color",
+        "hover_color",
         "Color",
         [],
         ['type' => 'color', 'layout' => 'inline'],
@@ -276,7 +308,7 @@ class CouponForm extends \Breakdance\Elements\Element
       ), getPresetSection(
       "EssentialElements\\borders",
       "Borders",
-      "borders",
+      "hover_borders",
        ['type' => 'popout']
      )],
         ['type' => 'section', 'layout' => 'vertical'],
@@ -287,7 +319,7 @@ class CouponForm extends \Breakdance\Elements\Element
         "success_message",
         "Success Message",
         [c(
-        "preview_in_builder",
+        "preview",
         "Preview In-Builder",
         [],
         ['type' => 'toggle', 'layout' => 'inline'],
@@ -295,7 +327,7 @@ class CouponForm extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "hide_the_message",
+        "hide",
         "Hide the message",
         [],
         ['type' => 'toggle', 'layout' => 'inline'],
@@ -342,7 +374,7 @@ class CouponForm extends \Breakdance\Elements\Element
         "error_message",
         "Error Message",
         [c(
-        "preview_in_builder",
+        "preview",
         "Preview In-Builder",
         [],
         ['type' => 'toggle', 'layout' => 'inline'],
@@ -350,7 +382,7 @@ class CouponForm extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "hide_the_message",
+        "hide",
         "Hide the message",
         [],
         ['type' => 'toggle', 'layout' => 'inline'],
@@ -410,7 +442,7 @@ class CouponForm extends \Breakdance\Elements\Element
       "typography",
        ['type' => 'popout']
      ), c(
-        "transition_duration",
+        "transition",
         "Transition duration",
         [],
         ['type' => 'unit', 'layout' => 'inline', 'rangeOptions' => ['min' => 0, 'max' => 20, 'step' => 0.1], 'unitOptions' => ['types' => ['0' => 's'], 'defaultType' => 's']],
@@ -458,7 +490,7 @@ class CouponForm extends \Breakdance\Elements\Element
         false,
         [],
       ), c(
-        "position_left",
+        "after_position_left",
         "Position: Left",
         [],
         ['type' => 'unit', 'layout' => 'inline'],
@@ -525,7 +557,7 @@ class CouponForm extends \Breakdance\Elements\Element
 
     static function dynamicPropertyPaths()
     {
-        return ['0' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '1' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string']];
+        return ['0' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '1' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '2' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '3' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string']];
     }
 
     static function additionalClasses()
