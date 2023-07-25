@@ -34,6 +34,7 @@ WooCommerce Elements
 
 ### 0.3 - 2023-07-25
 * New element - Coupon Form
+* Fixed - JS issue in Off Canvas element
 
 ### 0.2 - 2023-07-22
 * New element - Breadcrumbs
