@@ -21,11 +21,14 @@ General Elements
 * Accordion Menu
 * Animated Burger
 * Breadcrumbs
-* Coupon Form( Woo - In progress)
 * Off Canvas
 * Fluent Form Styler (In progress)
 * Post Terms
 * Sliding Menu (In progress)
+
+WooCommerce Elements
+--------------------
+* Coupon Form (In progress)
 
 ## Changelog
 
