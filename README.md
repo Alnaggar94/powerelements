@@ -8,7 +8,7 @@ Requires at least: 5.0.0
 
 Tested up to: 6.2.2
 
-Stable tag: 0.2
+Stable tag: 0.3
 
 Requires PHP: 7.4
 
@@ -31,6 +31,9 @@ WooCommerce Elements
 * Coupon Form
 
 ## Changelog
+
+### 0.3 - 2023-07-22
+* New element - Coupon Form
 
 ### 0.2 - 2023-07-22
 * New element - Breadcrumbs
