@@ -70,7 +70,7 @@ class OffCanvas extends \Breakdance\Elements\Element
 
     static function defaultProperties()
     {
-        return ['content' => ['general' => ['transition_duration' => 500], 'panel' => ['position' => 'right'], 'backdrop' => ['disable_backdrop' => false, 'fade_duration'=>500]]];
+        return ['content' => ['general' => ['transition_duration' => 500], 'panel' => ['position' => 'right'], 'backdrop' => ['disable_backdrop' => false, 'fade_duration' => 500]]];
     }
 
     static function defaultChildren()
@@ -154,7 +154,7 @@ class OffCanvas extends \Breakdance\Elements\Element
         "width",
         "Width",
         [],
-        ['type' => 'unit', 'layout' => 'inline', 'unitOptions' => ['types' => ['0' => 'px', '1' => '%', '2' => 'vw', '3' => 'custom', '4' => 'calc', '5' => 'auto'], 'defaultType' => 'px']],
+        ['type' => 'unit', 'layout' => 'inline', 'unitOptions' => ['types' => ['0' => 'px', '1' => '%', '2' => 'vw'], 'defaultType' => 'px']],
         false,
         false,
         [],
@@ -162,7 +162,7 @@ class OffCanvas extends \Breakdance\Elements\Element
         "height",
         "Height",
         [],
-        ['type' => 'unit', 'layout' => 'inline', 'unitOptions' => ['types' => ['0' => 'px', '1' => '%', '2' => 'vh', '3' => 'calc', '4' => 'auto', '5' => 'custom'], 'defaultType' => 'px']],
+        ['type' => 'unit', 'layout' => 'inline', 'unitOptions' => ['types' => ['0' => 'px', '1' => '%', '2' => 'vh'], 'defaultType' => 'px']],
         false,
         false,
         [],
@@ -306,7 +306,7 @@ class OffCanvas extends \Breakdance\Elements\Element
 
     static function attributes()
     {
-        return [['name' => 'data-ocp-config', 'template' => '{"triggerSelector":"{{ content.general.trigger_selector }}","triggerEvent":"{{content.general.trigger_on|default(\'click\')}}","panelWidth":{{ content.panel.width.style | default(300) }},"panelHeight":{{ content.panel.height.style | default(600) }},"disableScroll":"{{ (content.other.disable_scroll) ? \'yes\' : \'no\' }}","disableBackdropClick":"{{(content.backdrop.prevent_click_to_close_panel) ? \'yes\' : \'no\'}}","escBtn":"{{(content.other.prevent_esc_to_close_panel) ? \'yes\' : \'no\'}}","closeHashLink":"{{(content.other.close_after_clicking_hash_link) ? \'yes\' : \'no\'}}","panelTd":{{ content.general.transition_duration.style|default(500)}},"offset":{{content.general.offset_px_|default(0)}},"ocpPosition":"{{content.panel.position|default(\'right\')}}"}']];
+        return [['name' => 'data-ocp-config', 'template' => '{"triggerSelector":"{{ content.general.trigger_selector }}","triggerEvent":"{{content.general.trigger_on|default(\'click\')}}","panelWidth":{{ content.panel.width.style|replace({\'px\':\'\',\'%\':\'\',\'vw\':\'\'})|default(300) }},"panelHeight":{{ content.panel.height.style|replace({\'px\':\'\',\'%\':\'\',\'vh\':\'\'})|default(600) }},"disableScroll":"{{ (content.other.disable_scroll) ? \'yes\' : \'no\' }}","disableBackdropClick":"{{(content.backdrop.prevent_click_to_close_panel) ? \'yes\' : \'no\'}}","escBtn":"{{(content.other.prevent_esc_to_close_panel) ? \'yes\' : \'no\'}}","closeHashLink":"{{(content.other.close_after_clicking_hash_link) ? \'yes\' : \'no\'}}","panelTd":{{ content.general.transition_duration.style|default(500)}},"offset":{{content.general.offset_px_|default(0)}},"ocpPosition":"{{content.panel.position|default(\'right\')}}"}']];
     }
 
     static function experimental()
@@ -321,7 +321,7 @@ class OffCanvas extends \Breakdance\Elements\Element
 
     static function dynamicPropertyPaths()
     {
-        return ['0' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '1' => ['accepts' => 'image_url', 'path' => 'content.panel.background.layers[].image'], '2' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '3' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '4' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '5' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '6' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '7' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '8' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '9' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '10' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string']];
+        return ['0' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '1' => ['accepts' => 'image_url', 'path' => 'content.panel.background.layers[].image'], '2' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '3' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '4' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '5' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '6' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '7' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '8' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '9' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '10' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '11' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string']];
     }
 
     static function additionalClasses()
