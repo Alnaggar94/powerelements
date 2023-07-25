@@ -13,7 +13,7 @@ if( ! empty( $options['label_animation']['enable_animation'] ) ) {
 	$atts .= 'placeholder="' . wp_kses_post( $label ) . '"';
 }
 
-if( \Upadans\Plugin::isBuilderEditor() ) {
+if( \PowerElements\Plugin::isBuilderEditor() ) {
 	echo "<div class=\"woocommerce-message ue-in-builder\" role=\"alert\">Coupon code applied successfully.</div><ul class=\"woocommerce-error ue-in-builder\" role=\"alert\"><li>Coupon \"earlybird\" does not exist!</li></ul>";
 }
 

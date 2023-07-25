@@ -1,13 +1,13 @@
 <?php
 
-namespace Upadans;
+namespace PowerElements;
 
 use function Breakdance\Elements\c;
 use function Breakdance\Elements\PresetSections\getPresetSection;
 
 
 \Breakdance\ElementStudio\registerElementForEditing(
-    "Upadans\\CouponForm",
+    "PowerElements\\CouponForm",
     \Breakdance\Util\getdirectoryPathRelativeToPluginFolder(__DIR__)
 );
 
@@ -114,7 +114,7 @@ class CouponForm extends \Breakdance\Elements\Element
         "hascouponform",
         "hasCouponForm",
         [],
-        ['type' => 'toggle', 'layout' => 'inline', 'hideForElements' => ['0' => 'Upadans\CouponForm']],
+        ['type' => 'toggle', 'layout' => 'inline', 'hideForElements' => ['0' => 'PowerElements\CouponForm']],
         false,
         false,
         [],

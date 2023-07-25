@@ -21,7 +21,7 @@ $GLOBALS[ 'arrow_btn' ] = $icon_html;
 if( $source == 'menu' ) {
 	$acrd_menu = isset( $settings['general']['wp_menu'] ) ? $settings['general']['wp_menu'] : 'none';
 	if( $acrd_menu == 'none' || $acrd_menu == 'nomenu' ) {
-		if( \Upadans\Plugin::isBuilderEditor() ) {
+		if( \PowerElements\Plugin::isBuilderEditor() ) {
 			echo \Breakdance\Elements\getSsrErrorMessage( esc_html__( 'Select a menu', 'upadans' ) );
 		}
 
@@ -44,8 +44,8 @@ if( $source == 'menu' ) {
 		'text_indent' => absint( $text_indent )
 	);
 
-	add_filter( 'nav_menu_item_args', '\Upadans\ue_acrd_menu_items_args', 10, 3 );
-	add_filter( 'nav_menu_link_attributes', '\Upadans\ue_acrdmenu_link_attributes', 10, 4 );
+	add_filter( 'nav_menu_item_args', '\PowerElements\pe_acrd_menu_items_args', 10, 3 );
+	add_filter( 'nav_menu_link_attributes', '\PowerElements\pe_acrdmenu_link_attributes', 10, 4 );
 
 	$menu = '<nav itemscope itemtype="https://schema.org/SiteNavigationElement" data-acrd-config=\'' . wp_json_encode($config ) . '\'>';
 	$menu .= wp_nav_menu( $args );
@@ -53,8 +53,8 @@ if( $source == 'menu' ) {
 
 	echo $menu;
 
-	remove_filter( 'nav_menu_item_args', '\Upadans\ue_acrd_menu_items_args', 10, 3 );
-	remove_filter( 'nav_menu_link_attributes', '\Upadans\ue_acrdmenu_link_attributes', 10, 4 );
+	remove_filter( 'nav_menu_item_args', '\PowerElements\pe_acrd_menu_items_args', 10, 3 );
+	remove_filter( 'nav_menu_link_attributes', '\PowerElements\pe_acrdmenu_link_attributes', 10, 4 );
 }
 /**
  * Taxonomy
@@ -80,7 +80,7 @@ if( $source == 'tax' ) {
 		'pad_counts'         => 0,
 		'taxonomy'           => $taxonomy,
 		'text_indent' 		 => $text_indent,
-		'walker'             => new \Upadans\BeAccordionMenuWalker,
+		'walker'             => new \PowerElements\BeAccordionMenuWalker,
 	);
 
 	$include_ids = isset( $settings['general']['include_terms'] ) ? $settings['general']['include_terms'] : false;

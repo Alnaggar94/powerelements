@@ -14,48 +14,64 @@
   --hamburger-layer-border-radius: {{ content.burger_options.line_border_radius.style }};
 }
 
+{% if content.burger_options.line_color %}
 %%SELECTOR%% .hamburger-inner,
 %%SELECTOR%% .hamburger-inner:before,
 %%SELECTOR%% .hamburger-inner:after {
    background-color: {{ content.burger_options.line_color }}
 }
+{% endif %}
 
+{% if content.burger_options.slug_cant_start_with_number_1st_line_width.style %}
 %%SELECTOR%% .hamburger .hamburger-inner:before {
   width: {{ content.burger_options.slug_cant_start_with_number_1st_line_width.style }};
 }
+{% endif %}
 
+{% if content.burger_options.slug_cant_start_with_number_3rd_line_width.style %}
 %%SELECTOR%% .hamburger .hamburger-inner:after {
   width: {{ content.burger_options.slug_cant_start_with_number_3rd_line_width.style }};
 }
+{% endif %}
 
+{% if content.burger_options.line_color_hover %}
 %%SELECTOR%% .hamburger:hover .hamburger-inner,
 %%SELECTOR%% .hamburger:hover .hamburger-inner:before,
 %%SELECTOR%% .hamburger:hover .hamburger-inner:after {
    background-color: {{ content.burger_options.line_color_hover }}
 }
+{% endif %}
 
+{% if content.burger_options.line_color_active %}
 %%SELECTOR%% .hamburger.is-active .hamburger-inner,
 %%SELECTOR%% .hamburger.is-active .hamburger-inner:before,
 %%SELECTOR%% .hamburger.is-active .hamburger-inner:after {
    background-color: {{ content.burger_options.line_color_active }}
 }
+{% endif %}
 
 %%SELECTOR%% .hamburger-label {
    {{ macros.typography(content.button_text.typography, globalSettings) }}
 }
 
+{% if content.button_text.color_hover %}
 %%SELECTOR%% .hamburger:hover .hamburger-label {
    color: {{ content.button_text.color_hover }}
 }
+{% endif %}
 
+{% if content.button_text.color_active %}
 %%SELECTOR%% .hamburger.is-active .hamburger-label {
    color: {{ content.button_text.color_active }}
 }
+{% endif %}
 
 %%SELECTOR%% .ue-burger-sub-menu {
   {{ macros.backgroundColor(content.dropdown.background) }}
   {{ macros.borders(content.dropdown.borders) }}
   {{ macros.spacing_padding_all(content.dropdown.padding) }}
+  {% if content.dropdown.width.style %}
   width: {{ content.dropdown.width.style }};
+  {% endif %}
 }
 

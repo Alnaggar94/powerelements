@@ -1,4 +1,3 @@
-%%SELECTOR%% { }
 {% if isBuilder %}
 .ue-offcanvas:not(.ue-hide-panel) {
     top: 0;
@@ -24,7 +23,11 @@
 
 {% if content.backdrop.disable_backdrop == false %}
 %%SELECTOR%% .ue-ocp-backdrop {
-  background-color: {{ content.backdrop.background }}
+  {% if content.backdrop.background %}
+  background-color: {{ content.backdrop.background }};
+  {% endif %}
+  {% if content.backdrop.fade_duration.style %}
   transition-duration: {{ content.backdrop.fade_duration.style }}ms;
+  {% endif %}
 }
 {% endif %}

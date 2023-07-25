@@ -1,13 +1,13 @@
 <?php
 
-namespace Upadans;
+namespace PowerElements;
 
 use function Breakdance\Elements\c;
 use function Breakdance\Elements\PresetSections\getPresetSection;
 
 
 \Breakdance\ElementStudio\registerElementForEditing(
-    "Upadans\\AnimatedBurger",
+    "PowerElements\\AnimatedBurger",
     \Breakdance\Util\getdirectoryPathRelativeToPluginFolder(__DIR__)
 );
 
@@ -353,7 +353,7 @@ class AnimatedBurger extends \Breakdance\Elements\Element
 
     static function dynamicPropertyPaths()
     {
-        return ['0' => ['accepts' => 'string', 'path' => 'content.button_text.text'], '1' => ['accepts' => 'string', 'path' => 'content.burger_options.aria_label']];
+        return ['0' => ['accepts' => 'string', 'path' => 'content.button_text.text'], '1' => ['accepts' => 'string', 'path' => 'content.burger_options.aria_label'], '2' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '3' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '4' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string'], '5' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string']];
     }
 
     static function additionalClasses()

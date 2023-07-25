@@ -1,13 +1,13 @@
 <?php
 
-namespace Upadans;
+namespace PowerElements;
 
 use function Breakdance\Elements\c;
 use function Breakdance\Elements\PresetSections\getPresetSection;
 
 
 \Breakdance\ElementStudio\registerElementForEditing(
-    "Upadans\\FluentFormsStyler",
+    "PowerElements\\FluentFormsStyler",
     \Breakdance\Util\getdirectoryPathRelativeToPluginFolder(__DIR__)
 );
 

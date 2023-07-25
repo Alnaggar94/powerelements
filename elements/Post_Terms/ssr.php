@@ -15,7 +15,7 @@ $terms    = \wp_get_object_terms(
 $terms = \wp_list_filter( $terms, [ 'slug' => 'uncategorized' ], 'NOT' );
 
 if ( ! count( $terms ) || is_wp_error( $terms ) ) {
-	if( \Upadans\Plugin::isBuilderEditor() ) {
+	if( \PowerElements\Plugin::isBuilderEditor() ) {
 		echo \Breakdance\Elements\getSsrErrorMessage( sprintf( esc_html__( 'This post has no %s terms.', 'upadans' ), ucfirst( get_taxonomy( $taxonomy )->name ) ) );
 	}
 } else {
