@@ -66,3 +66,20 @@ class BeAccordionMenuWalker extends \Walker_Category {
         }
 	}
 }
+
+function ue_acrd_menu_items_args( $args, $item, $depth ) {
+	$rp_item = '<span style="margin-left:' . ( $depth * $args->text_indent ). 'px;"';
+
+	$args->link_before = str_replace( '<span', $rp_item, $args->link_before );
+
+	return $args;
+}
+
+function ue_acrdmenu_link_attributes( $atts, $item, $args, $depth ) {
+	$atts['itemprop'] = 'url';
+	if( isset( $item->title ) ) {
+		$atts['data-title'] = esc_attr( $item->title );
+	}
+
+	return $atts;
+}

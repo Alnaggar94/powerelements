@@ -71,47 +71,10 @@ class Plugin {
         self::$instance = $this;
 
         add_action( 'plugins_loaded', 	[ $this, 'on_plugins_loaded' ] );
-		add_action('breakdance_loaded', function () {
-			\Breakdance\ElementStudio\registerSaveLocation(
-				\Breakdance\Util\getDirectoryPathRelativeToPluginFolder( dirname( $this->plugin_file ) ) . '/elements',
-				'Upadans',
-				'element',
-				'Upadans',
-				true
-			);
-			add_filter('breakdance_element_dependencies', [ $this, 'addDependencies' ], 100);
-		}, 9 );
 
-		
-		add_action('breakdance_loaded', function () {
-			if( function_exists( 'wpFluentForm' ) ) {
-				\Breakdance\AJAX\register_handler(
-					'ue_get_fluentforms',
-					[ $this, 'getFluentForms' ],
-					'edit',
-					true
-				);
-			}
-		});
+        require_once __DIR__ . '/Helpers.php';
+        new \Upadans\Helpers( $this->project_root_path, $this->project_root_url);
     }
-
-    /**
-     * Will check builder pages
-     *
-     * @return array
-     */
-	public function ue_style_post_state ($post_states, $post) {
-		if( isset( $post_states['breakdance'] ) ) {
-			if( current_user_can( 'edit_posts', $post->ID ) ) {
-				$edit_link = get_permalink($post->ID) . '?breakdance=builder&id=' . $post->ID;
-				$post_states['breakdance'] = '<a href="' . $edit_link . '" rel="nofollow ugc" style="background-color:#fcd568; padding: 2px 6px 4px;color:#444">' . $post_states['breakdance'] . '</a>';
-			} else {
-				$post_states['breakdance'] = '<span style="background-color:#fcd568; padding: 4px 6px">' . $post_states['breakdance'] . '</span>';
-			}
-		}
-
-		return $post_states;
-	}
 
     /**
      * Will fire after the plugins are loaded and will initialize this plugin
@@ -125,8 +88,6 @@ class Plugin {
     	if( class_exists('WooCommerce') ) {
     		\Breakdance\Elements\registerCategory('uwoo', 'Interactive Woo');
     	}
-
-    	add_filter( 'display_post_states', [ $this, 'ue_style_post_state' ], 15, 2 );
     }
 
     /**
@@ -208,66 +169,6 @@ class Plugin {
 		}
 
 		return get_plugin_data( $path );
-	}
-
-	/**
-	 * Loading element specific dependencies
-	 * 
-	 * @return array $deps
-	 */
-	public function addDependencies( $deps ) {
-    	$deps[] = [
-			"frontendCondition" => "return !!'{{content.panel.position}}';",
-			"builderCondition" => "return false;",
-			"scripts" => [
-				$this->project_root_url . 'elements/Off_Canvas/assets/offcanvas.min.js?ver=' . $this->version
-			]
-		];
-
-		$deps[] = [
-			"frontendCondition" => "return !!'{{content.burger_options.effect}}';",
-			"builderCondition" => "return false;",
-			"scripts" => [
-				$this->project_root_url . 'elements/AnimatedBurger/assets/animated-burger.min.js?ver=' . $this->version
-			]
-		];
-
-		$deps[] = [
-			"frontendCondition" => "return !!'{{content.general.source}}';",
-			"builderCondition" => "return !!'{{content.general.source}}';",
-			"scripts" => [
-				$this->project_root_url . 'elements/Accordion_Menu/assets/accordion-menu.min.js?ver=' . filemtime($this->project_root_path . 'elements/Accordion_Menu/assets/accordion-menu.min.js'),
-				$this->project_root_url . 'assets/js/upadans.global.min.js?ver=' . filemtime($this->project_root_path . 'assets/js/upadans.global.min.js')
-			]
-		];
-
-    	return $deps;
-    }
-
-	/**
-	 * Get all fluent forms
-	 * 
-	 * @return array $fforms
-	 */
-	public function getFluentForms() {
-		if( ! function_exists( 'wpFluentForm' ) )
-			return [];
-		
-		$ff_list = \FluentForm\App\Models\Form::select(['id', 'title'])->orderBy('id', 'DESC')->get();
-		if( $ff_list ) {
-			$fforms[]= [ 'value' => 'none', 'text' => esc_html__('Select a Fluent Forms', 'fluentform')];
-			foreach ($ff_list as $form) {
-				$fforms[] = [ 'value' => "{$form->id}", 'text' => esc_html($form->title) . ' (' . $form->id . ')' ];
-			}
-		}  else {
-			$fforms[]= [ 'value' => 'none', 'text' => esc_html__('Create a Form First', 'fluentform')];
-		}
-
-		return $fforms;
-	}
-
-	public static function ue_rank_math_crumbs_html( $html, $crumbs, $object ) {
-		return str_replace( 'class="last"', 'class="last breadcrumb_last"', $html );
 	}
 
 	/**
