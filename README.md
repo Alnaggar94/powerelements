@@ -28,7 +28,7 @@ General Elements
 
 WooCommerce Elements
 --------------------
-* Coupon Form (In progress)
+* Coupon Form
 
 ## Changelog
 
