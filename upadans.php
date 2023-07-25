@@ -5,17 +5,17 @@
  * @wordpress-plugin
  * Plugin Name: 	Upadans
  * Plugin URI: 		https://www.bricksultimate.com
- * Description: 	Providing handy custom elements for the Breakdance builder. A time saver extension.
- * Author: 		Paul Chinmoy
+ * Description: 	Providing handy elements for the Breakdance.
+ * Author: 			Paul Chinmoy
  * Author URI: 		https://www.paulchinmoy.com
- * Tested up to:    	6.2.2
+ * Tested up to:    6.2.2
  * Version: 		0.2
  *
  * License: 		GPLv2 or later
  * License URI: 	http://www.gnu.org/licenses/gpl-2.0.html
  *
  * Text Domain: 	upadans
- * Domain Path: 	languages
+ * Domain Path: 	languages  
  */
 
 /**
