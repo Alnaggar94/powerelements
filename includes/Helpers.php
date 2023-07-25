@@ -18,7 +18,7 @@ class Helpers {
 				'Upadans',
 				'element',
 				'Upadans',
-				true
+				false
 			);
 			add_filter('breakdance_element_dependencies', [ $this, 'addDependencies' ], 100);
 		}, 9 );
@@ -46,7 +46,8 @@ class Helpers {
 		$offCanvas = 'elements/Off_Canvas/assets/offcanvas.min.js';
 		$acrdMenu = 'elements/Accordion_Menu/assets/accordion-menu.min.js';
 		$burger = 'elements/AnimatedBurger/assets/animated-burger.min.js';
-		$globalJs = 'assets/js/upadans.global.min.js';
+		$globalJS = 'assets/js/upadans.global.min.js';
+		$cfJS = 'elements/Coupon_Form/assets/ue.couponform.min.js';
 
 		$deps[] = [
 			"frontendCondition" => "return !!'{{content.panel.position}}';",
@@ -65,11 +66,19 @@ class Helpers {
 		];
 
 		$deps[] = [
+			"frontendCondition" => "return !!'{{content.layout.hascouponform}}';",
+			"builderCondition" => "return false;",
+			"scripts" => [
+				$this->url . $cfJS . '?ver=' . filemtime($this->path . $cfJS)
+			]
+		];
+
+		$deps[] = [
 			"frontendCondition" => "return !!'{{content.general.source}}';",
 			"builderCondition" => "return !!'{{content.general.source}}';",
 			"scripts" => [
 				$this->url . $acrdMenu . '?ver=' . filemtime($this->path . $acrdMenu),
-				$this->url . $globalJs . '?ver=' . filemtime($this->path . $globalJs)
+				$this->url . $globalJS . '?ver=' . filemtime($this->path . $globalJS)
 			]
 		];
 
