@@ -18,7 +18,7 @@ class Helpers {
 				'Upadans',
 				'element',
 				'Upadans',
-				false
+				true
 			);
 			add_filter('breakdance_element_dependencies', [ $this, 'addDependencies' ], 100);
 		}, 9 );
