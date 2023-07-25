@@ -1,5 +1,5 @@
 <?php
-namespace Upadans;
+namespace PowerElements;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -73,7 +73,7 @@ class Plugin {
         add_action( 'plugins_loaded', 	[ $this, 'on_plugins_loaded' ] );
 
         require_once __DIR__ . '/Helpers.php';
-        new \Upadans\Helpers( $this->project_root_path, $this->project_root_url);
+        new \PowerElements\Helpers( $this->project_root_path, $this->project_root_url);
     }
 
     /**

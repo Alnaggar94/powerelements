@@ -1,5 +1,5 @@
 <?php
-namespace Upadans;
+namespace PowerElements;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -15,10 +15,10 @@ class Helpers {
 		add_action('breakdance_loaded', function () {
 			\Breakdance\ElementStudio\registerSaveLocation(
 				\Breakdance\Util\getDirectoryPathRelativeToPluginFolder( $this->path ) . '/elements',
-				'Upadans',
+				'PowerElements',
 				'element',
-				'Upadans',
-				true
+				'Power Elements',
+				false
 			);
 			add_filter('breakdance_element_dependencies', [ $this, 'addDependencies' ], 100);
 		}, 9 );
@@ -26,14 +26,14 @@ class Helpers {
 		add_action('breakdance_loaded', function () {
 			if( function_exists( 'wpFluentForm' ) ) {
 				\Breakdance\AJAX\register_handler(
-					'ue_get_fluentforms',
+					'pe_get_fluentforms',
 					[ $this, 'getFluentForms' ],
 					'edit',
 					true
 				);
 			}
 
-			add_filter( 'display_post_states', [ $this, 'ue_style_post_state' ], 15, 2 );
+			add_filter( 'display_post_states', [ $this, 'pe_style_post_state' ], 15, 2 );
 		});
 	}
 
@@ -90,7 +90,7 @@ class Helpers {
 	 *
 	 * @return array
 	 */
-	public function ue_style_post_state ($post_states, $post) {
+	public function pe_style_post_state ($post_states, $post) {
 		if( isset( $post_states['breakdance'] ) ) {
 			if( current_user_can( 'edit_posts', $post->ID ) ) {
 				$edit_link = get_permalink($post->ID) . '?breakdance=builder&id=' . $post->ID;
@@ -125,7 +125,7 @@ class Helpers {
 		return $fforms;
 	}
 
-	public static function ue_rank_math_crumbs_html( $html, $crumbs, $object ) {
+	public static function pe_rank_math_crumbs_html( $html, $crumbs, $object ) {
 		return str_replace( 'class="last"', 'class="last breadcrumb_last"', $html );
 	}
 }
