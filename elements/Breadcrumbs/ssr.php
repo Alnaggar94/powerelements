@@ -10,9 +10,9 @@ if( $seoPlugin == 'allinone' && function_exists( 'aioseo_breadcrumbs' ) ) {
 
 	bcn_display(false, $linked, $reverse, $force);
 } elseif( $seoPlugin == 'rankmath' && function_exists( 'rank_math_the_breadcrumbs' ) ) {
-	add_filter('rank_math/frontend/breadcrumb/html', [ '\Upadans\Plugin', 'ue_rank_math_crumbs_html' ], 10, 3 );
+	add_filter('rank_math/frontend/breadcrumb/html', [ '\Upadans\Helpers', 'ue_rank_math_crumbs_html' ], 10, 3 );
 	rank_math_the_breadcrumbs();
-	remove_filter('rank_math/frontend/breadcrumb/settings', [ '\Upadans\Plugin', 'ue_rank_math_crumbs_settings' ] );
+	remove_filter('rank_math/frontend/breadcrumb/settings', [ '\Upadans\Helpers', 'ue_rank_math_crumbs_settings' ] );
 } elseif( $seoPlugin == 'seopress' && function_exists( 'seopress_display_breadcrumbs' )) {
 	seopress_display_breadcrumbs();
 } elseif( $seoPlugin == 'slim' && class_exists( '\SlimSEO\Breadcrumbs' ) ) { //left
